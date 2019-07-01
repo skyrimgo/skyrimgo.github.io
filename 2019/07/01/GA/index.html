@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/7 | Hexo</title>
+  <title>遗传算法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+  <meta name="description" content="遗传算法（GA）设置种群参数1234567private int ChrNum = 10; // 染色体数量private String[] ipop = new String[ChrNum]; // 一个种群中染色体总数private int generation = 0; // 染色体代号public static final int GENE = 46; // 基因数private doub">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遗传算法">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/GA/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="遗传算法（GA）设置种群参数1234567private int ChrNum = 10; // 染色体数量private String[] ipop = new String[ChrNum]; // 一个种群中染色体总数private int generation = 0; // 染色体代号public static final int GENE = 46; // 基因数private doub">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-01T06:40:50.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="遗传算法">
+<meta name="twitter:description" content="遗传算法（GA）设置种群参数1234567private int ChrNum = 10; // 染色体数量private String[] ipop = new String[ChrNum]; // 一个种群中染色体总数private int generation = 0; // 染色体代号public static final int GENE = 46; // 基因数private doub">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,36 +155,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-GA" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      遗传算法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/01/GA/" class="archive-article-date">
+
+        
+        <a href="/2019/07/01/GA/" class="archive-article-date">
   	<time datetime="2019-07-01T06:15:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/01/GA/">遗传算法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="遗传算法（GA）"><a href="#遗传算法（GA）" class="headerlink" title="遗传算法（GA）"></a>遗传算法（GA）</h2><h3 id="设置种群参数"><a href="#设置种群参数" class="headerlink" title="设置种群参数"></a>设置种群参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private int ChrNum = 10; // 染色体数量</span><br><span class="line">private String[] ipop = new String[ChrNum]; // 一个种群中染色体总数</span><br><span class="line">private int generation = 0; // 染色体代号</span><br><span class="line">public static final int GENE = 46; // 基因数</span><br><span class="line">private double bestfitness = Double.MAX_VALUE; // 函数最优解</span><br><span class="line">private int bestgenerations; // 所有子代与父代中最好的染色体</span><br><span class="line">private String beststr; // 最优解的染色体的二进制码</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h3 id="初始化种群中的每一个染色体"><a href="#初始化种群中的每一个染色体" class="headerlink" title="初始化种群中的每一个染色体"></a>初始化种群中的每一个染色体</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">private String <span class="function"><span class="title">initChr</span></span>() &#123;</span><br><span class="line">  String res = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">for</span> (int i = 0; i &lt; GENE; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Math.random() &gt; 0.5) &#123;</span><br><span class="line">      res += <span class="string">"0"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res += <span class="string">"1"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">private String[] <span class="function"><span class="title">initPop</span></span>() &#123;</span><br><span class="line">		String[] ipop = new String[ChrNum];</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; ChrNum; i++) &#123;</span><br><span class="line">			ipop[i] = initChr();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> ipop;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基因编码"><a href="#基因编码" class="headerlink" title="基因编码"></a>基因编码</h3><p>染色体的基因编码与变量的值转换,以目标函数fitness作为每个染色体的适应度值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private double[] calculatefitnessvalue(String str) &#123;</span><br><span class="line">  // 二进制数前23位为x的二进制字符串，后23位为y的二进制字符串</span><br><span class="line">  int a = Integer.parseInt(str.substring(0, 23), 2);</span><br><span class="line">  int b = Integer.parseInt(str.substring(23, 46), 2);</span><br><span class="line">  double x = a * (6.0 - 0.0) / (Math.pow(2, 23) - 1); // x的基因</span><br><span class="line">  double y = b * (6.0 - 0.0) / (Math.pow(2, 23) - 1); // y的基因</span><br><span class="line">  double fitness = 3 - Math.sin(2 * x) * Math.sin(2 * x) - Math.sin(2 * y) * Math.sin(2 * y);</span><br><span class="line">  double[] returns = &#123; x, y, fitness &#125;;</span><br><span class="line">  <span class="built_in">return</span> returns;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><p>计算群体上每个个体的适应度值，按由个体适应度值所决定的某个规则选择将进入下一代的个体,同时记录下该种群中的最优解</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">private void <span class="function"><span class="title">select</span></span>() &#123;</span><br><span class="line">		double evals[] = new double[ChrNum]; // 所有染色体适应值</span><br><span class="line">		double p[] = new double[ChrNum]; // 各染色体选择概率</span><br><span class="line">		double q[] = new double[ChrNum]; // 累计概率</span><br><span class="line">		double F = 0; // 累计适应值总和</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; ChrNum; i++) &#123;</span><br><span class="line">			evals[i] = calculatefitnessvalue(ipop[i])[2];</span><br><span class="line">			<span class="keyword">if</span> (evals[i] &lt; bestfitness) &#123;</span><br><span class="line">				bestfitness = evals[i];</span><br><span class="line">				bestgenerations = generation;</span><br><span class="line">				beststr = ipop[i];</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			F = F + evals[i]; // 所有染色体适应值总和</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; ChrNum; i++) &#123;</span><br><span class="line">			p[i] = evals[i] / F;</span><br><span class="line">			<span class="keyword">if</span> (i == 0)</span><br><span class="line">				q[i] = p[i];</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				q[i] = q[i - 1] + p[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; ChrNum; i++) &#123;</span><br><span class="line">			double r = Math.random();</span><br><span class="line">			<span class="keyword">if</span> (r &lt;= q[0]) &#123;</span><br><span class="line">				ipop[i] = ipop[0];</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">for</span> (int j = 1; j &lt; ChrNum; j++) &#123;</span><br><span class="line">					<span class="keyword">if</span> (r &lt; q[j]) &#123;</span><br><span class="line">						ipop[i] = ipop[j];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="交叉"><a href="#交叉" class="headerlink" title="交叉"></a>交叉</h3><p>交叉率为60%，平均为60%的染色体进行交叉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void <span class="function"><span class="title">cross</span></span>() &#123;</span><br><span class="line">  String temp1, temp2;</span><br><span class="line">  <span class="keyword">for</span> (int i = 0; i &lt; ChrNum; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Math.random() &lt; 0.60) &#123;</span><br><span class="line">      int pos = (int) (Math.random() * GENE) + 1;</span><br><span class="line">      temp1 = ipop[i].substring(0, pos) + ipop[(i + 1) % ChrNum].substring(pos);</span><br><span class="line">      temp2 = ipop[(i + 1) % ChrNum].substring(0, pos) + ipop[i].substring(pos);</span><br><span class="line">      ipop[i] = temp1;</span><br><span class="line">      ipop[(i + 1) / ChrNum] = temp2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变异"><a href="#变异" class="headerlink" title="变异"></a>变异</h3><p>基因突变具有不定向性，不能保证解的绝对优化，但可以防止陷入局部最优解，这里选取1%的基因进行变异操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">private void <span class="function"><span class="title">mutation</span></span>() &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">			int num = (int) (Math.random() * GENE * ChrNum + 1);</span><br><span class="line">			int chromosomeNum = (int) (num / GENE) + 1; // 染色体号</span><br><span class="line"></span><br><span class="line">			int mutationNum = num - (chromosomeNum - 1) * GENE; // 基因号</span><br><span class="line">			<span class="keyword">if</span> (mutationNum == 0)</span><br><span class="line">				mutationNum = 1;</span><br><span class="line">			chromosomeNum = chromosomeNum - 1;</span><br><span class="line">			<span class="keyword">if</span> (chromosomeNum &gt;= ChrNum)</span><br><span class="line">				chromosomeNum = 9;</span><br><span class="line">			String temp;</span><br><span class="line">			String a; // 记录变异位点变异后的编码</span><br><span class="line">			<span class="keyword">if</span> (ipop[chromosomeNum].charAt(mutationNum - 1) == <span class="string">'0'</span>) &#123; // 当变异位点为0时</span><br><span class="line">				a = <span class="string">"1"</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				a = <span class="string">"0"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			// 当变异位点在首、中段和尾时的突变情况</span><br><span class="line">			<span class="keyword">if</span> (mutationNum == 1) &#123;</span><br><span class="line">				temp = a + ipop[chromosomeNum].substring(mutationNum);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (mutationNum != GENE) &#123;</span><br><span class="line">					temp = ipop[chromosomeNum].substring(0, mutationNum - 1) + a</span><br><span class="line">							+ ipop[chromosomeNum].substring(mutationNum);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					temp = ipop[chromosomeNum].substring(0, mutationNum - 1) + a;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			// 记录下变异后的染色体</span><br><span class="line">			ipop[chromosomeNum] = temp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String args[]) &#123;</span><br><span class="line">  GA Tryer = new GA();</span><br><span class="line">  Tryer.ipop = Tryer.initPop(); // 产生初始种群</span><br><span class="line">  String str = <span class="string">""</span>;</span><br><span class="line">  // 迭代次数</span><br><span class="line">  <span class="keyword">for</span> (int i = 0; i &lt; 100000; i++) &#123;</span><br><span class="line">    Tryer.select();</span><br><span class="line">    Tryer.cross();</span><br><span class="line">    Tryer.mutation();</span><br><span class="line">    Tryer.generation = i;</span><br><span class="line">  &#125;</span><br><span class="line">  double[] x = Tryer.calculatefitnessvalue(Tryer.beststr);</span><br><span class="line">  str = <span class="string">"最小值"</span> + Tryer.bestfitness + <span class="string">'\n'</span> + <span class="string">"第"</span> + Tryer.bestgenerations + <span class="string">"个染色体:&lt;"</span> + Tryer.beststr + <span class="string">"&gt;"</span> + <span class="string">'\n'</span></span><br><span class="line">      + <span class="string">"x="</span> + x[0] + <span class="string">'\n'</span> + <span class="string">"y="</span> + x[1];</span><br><span class="line">  System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">最小值1.0000297643275602</span><br><span class="line">第88578个染色体:&lt;0010000101100111011001110100111100000010010010&gt;</span><br><span class="line">x=0.7829040030126575</span><br><span class="line">y=3.925886145339745</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,84 +235,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/01/GA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/01/PSO/" class="archive-article-date">
-  	<time datetime="2019-07-01T00:30:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/01/PSO/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">粒子群算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/01/PSO/">粒子群算法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/01/hello-world/" class="archive-article-date">
-  	<time datetime="2019-07-01T00:14:50.894Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/01/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -291,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
