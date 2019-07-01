@@ -243,7 +243,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="粒子群优化算法（PSO）"><a href="#粒子群优化算法（PSO）" class="headerlink" title="粒子群优化算法（PSO）"></a>粒子群优化算法（PSO）</h2><p>利用群体中的个体对信息的共享使整个群体的运动在问题求解空间中产生从无序到有序的演化过程，从而获得最优解。</p>
+        <h2 id="粒子群算法（PSO）"><a href="#粒子群算法（PSO）" class="headerlink" title="粒子群算法（PSO）"></a>粒子群算法（PSO）</h2><p>利用群体中的个体对信息的共享使整个群体的运动在问题求解空间中产生从无序到有序的演化过程，从而获得最优解。</p>
 <h3 id="粒子群参数设置"><a href="#粒子群参数设置" class="headerlink" title="粒子群参数设置"></a>粒子群参数设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int n = 3; // 粒子个数</span><br><span class="line">double[] y;</span><br><span class="line">double[] x;</span><br><span class="line">double[] v;</span><br><span class="line">double c1 = 2;</span><br><span class="line">double c2 = 2;</span><br><span class="line">double pbest[];</span><br><span class="line">double gbest;</span><br><span class="line">double vmax = 0.1; // 速度最大值</span><br></pre></td></tr></table></figure>
 
 <h3 id="适应度函数"><a href="#适应度函数" class="headerlink" title="适应度函数"></a>适应度函数</h3><p>定义适应度函数，每个粒子都有自己的适应度(这里求解y=-x<sup>2</sup>+2x的最大值)</p>
