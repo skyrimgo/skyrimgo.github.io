@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>粒子群算法 | 三土随笔</title>
+  <title>LRUcache | 三土随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="粒子群算法（PSO）利用群体中的个体对信息的共享使整个群体的运动在问题求解空间中产生从无序到有序的演化过程，从而获得最优解。">
+  <meta name="description" content="LRU缓存机制运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="粒子群算法">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/PSO/index.html">
+<meta property="og:title" content="LRUcache">
+<meta property="og:url" content="http://yoursite.com/2019/07/06/LRUcache/index.html">
 <meta property="og:site_name" content="三土随笔">
-<meta property="og:description" content="粒子群算法（PSO）利用群体中的个体对信息的共享使整个群体的运动在问题求解空间中产生从无序到有序的演化过程，从而获得最优解。">
+<meta property="og:description" content="LRU缓存机制运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-05T09:30:14.001Z">
+<meta property="og:updated_time" content="2019-07-06T10:08:13.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="粒子群算法">
-<meta name="twitter:description" content="粒子群算法（PSO）利用群体中的个体对信息的共享使整个群体的运动在问题求解空间中产生从无序到有序的演化过程，从而获得最优解。">
+<meta name="twitter:title" content="LRUcache">
+<meta name="twitter:description" content="LRU缓存机制运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
   
     <link rel="alternative" href="/atom.xml" title="三土随笔" type="application/atom+xml">
   
@@ -137,43 +137,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PSO" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LRUcache" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      粒子群算法
+      LRUcache
     </h1>
   
 
         
-        <a href="/2019/07/01/PSO/" class="archive-article-date">
-  	<time datetime="2019-07-01T00:30:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+        <a href="/2019/07/06/LRUcache/" class="archive-article-date">
+  	<time datetime="2019-07-06T09:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="粒子群算法（PSO）"><a href="#粒子群算法（PSO）" class="headerlink" title="粒子群算法（PSO）"></a>粒子群算法（PSO）</h2><p>利用群体中的个体对信息的共享使整个群体的运动在问题求解空间中产生从无序到有序的演化过程，从而获得最优解。</p>
+        <h2 id="LRU缓存机制"><a href="#LRU缓存机制" class="headerlink" title="LRU缓存机制"></a>LRU缓存机制</h2><p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。</p>
 <a id="more"></a>
+<p>获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。<br>写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用的数据值，从而为新的数据值留出空间。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LRUCache cache = new LRUCache( 2 /* 缓存容量 */ );</span><br><span class="line">cache.put(1, 1);</span><br><span class="line">cache.put(2, 2);</span><br><span class="line">cache.get(1); // 返回 1</span><br><span class="line">cache.put(3, 3); // 该操作会使得密钥 2</span><br><span class="line">作废 cache.get(2); // 返回 -1 (未找到)</span><br><span class="line">cache.put(4, 4); // 该操作会使得密钥 1 作废</span><br><span class="line">cache.get(1); // 返回 -1 (未找到)</span><br><span class="line">cache.get(3); // 返回 3</span><br><span class="line">cache.get(4); // 返回 4</span><br></pre></td></tr></table></figure>
 
-<h3 id="粒子群参数设置"><a href="#粒子群参数设置" class="headerlink" title="粒子群参数设置"></a>粒子群参数设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int n = 3; // 粒子个数</span><br><span class="line">double[] y;</span><br><span class="line">double[] x;</span><br><span class="line">double[] v;</span><br><span class="line">double c1 = 2;</span><br><span class="line">double c2 = 2;</span><br><span class="line">double pbest[];</span><br><span class="line">double gbest;</span><br><span class="line">double vmax = 0.1; // 速度最大值</span><br></pre></td></tr></table></figure>
-
-<h3 id="适应度函数"><a href="#适应度函数" class="headerlink" title="适应度函数"></a>适应度函数</h3><p>定义适应度函数，每个粒子都有自己的适应度(这里求解y=-x<sup>2</sup>+2x的最大值)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void <span class="function"><span class="title">fitnessFunction</span></span>() &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        y[i] = -1 * x[i] * (x[i] - 2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="粒子群初始化"><a href="#粒子群初始化" class="headerlink" title="粒子群初始化"></a>粒子群初始化</h3><p>初始化当前个体最优位置，并找到群体最优位置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public void <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">    x = new double[n];</span><br><span class="line">    v = new double[n];</span><br><span class="line">    y = new double[n];</span><br><span class="line">    pbest = new double[n];</span><br><span class="line">    x[0] = 0.0;</span><br><span class="line">    x[1] = 2.0;</span><br><span class="line">    x[2]=0.5;</span><br><span class="line">    v[0] = 0.01;</span><br><span class="line">    v[1] = 0.02;</span><br><span class="line">    fitnessFunction();</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        pbest[i] = y[i];</span><br><span class="line">        <span class="keyword">if</span> (y[i] &gt; gbest)</span><br><span class="line">            gbest = y[i];</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">"算法开始，起始最优解:"</span> + gbest);</span><br><span class="line">    System.out.print(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="更新粒子群"><a href="#更新粒子群" class="headerlink" title="更新粒子群"></a>更新粒子群</h3><p>更新每个粒子的位置和速度，更新个体极值和群体极值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public void PSO(int max) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = 0; i &lt; max; i++) &#123;</span><br><span class="line">        double w = 0.4;</span><br><span class="line">        <span class="keyword">for</span> (int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">            v[j] = w * v[j] + c1 * Math.random() * (pbest[j] - x[j]) + c2 * Math.random() * (gbest - x[j]);</span><br><span class="line">            <span class="keyword">if</span> (v[j] &gt; vmax)</span><br><span class="line">                v[j] = vmax;// 控制速度不超过最大值</span><br><span class="line">            x[j] += v[j];</span><br><span class="line">            // 越界判断，范围限定在[0, 2]</span><br><span class="line">            <span class="keyword">if</span> (x[j] &gt; 2)</span><br><span class="line">                x[j] = 2;</span><br><span class="line">            <span class="keyword">if</span> (x[j] &lt; 0)</span><br><span class="line">                x[j] = 0;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        fitnessFunction();</span><br><span class="line">        // 更新个体极值和群体极值</span><br><span class="line">        <span class="keyword">for</span> (int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">            pbest[j] = Math.max(y[j], pbest[j]);</span><br><span class="line">            <span class="keyword">if</span> (pbest[j] &gt; gbest)</span><br><span class="line">                gbest = pbest[j];</span><br><span class="line">            System.out.println(<span class="string">"粒子n"</span> + j + <span class="string">" :  x = "</span> + x[j] + <span class="string">"    "</span> + <span class="string">" v  = "</span> + v[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"第"</span> + (i + 1) + <span class="string">" 次迭代，全局最优解 gbest = "</span> + gbest);</span><br><span class="line">        System.out.print(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    AlgorithmPSO ts = new AlgorithmPSO();</span><br><span class="line">    ts.init();</span><br><span class="line">    ts.PSO(100);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="运算结果"><a href="#运算结果" class="headerlink" title="运算结果"></a>运算结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">粒子n0 :  x = 0.9999999999934679     v  = 2.595715028936614E-12</span><br><span class="line">粒子n1 :  x = 0.9999999999977818     v  = -4.865410319968633E-12</span><br><span class="line">粒子n2 :  x = 1.0000000514230944     v  = 7.147215240458387E-8</span><br><span class="line">第100 次迭代，全局最优解 gbest = 1.0</span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class LRUCache &#123;</span><br><span class="line">    LRU cache;</span><br><span class="line"></span><br><span class="line">    public LRUCache(int capacity) &#123;</span><br><span class="line">        this.cache = new LRU(capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int get(int key) &#123;</span><br><span class="line">        <span class="keyword">if</span> (cache.containsKey(key)) &#123;</span><br><span class="line">            <span class="built_in">return</span> cache.get(key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void put(int key, int value) &#123;</span><br><span class="line">        put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class LRU extends LinkedHashMap&lt;Integer, Integer&gt; &#123;</span><br><span class="line">        int capacity;</span><br><span class="line"></span><br><span class="line">        //加载因子默认为0.75，当Map中的数据量达到总容量的75%时，其容量空间自动扩容量。</span><br><span class="line">        //访问节点时，使之成为尾部节点</span><br><span class="line">        public LRU(int capacity) &#123;</span><br><span class="line">            super(capacity, 0.75f, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //当LinkedHashmap添加元素后，会调用removeEldestEntry防范，方法返回<span class="literal">true</span>时最久的键值会被删除</span><br><span class="line">        @Override</span><br><span class="line">        protected boolean removeEldestEntry(Map.Entry eldest) &#123;</span><br><span class="line">            <span class="built_in">return</span> this.size() &gt; this.capacity;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -244,7 +233,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/01/PSO/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/06/LRUcache/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -258,15 +247,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/01/GA/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          遗传算法
-        
-      </div>
-    </a>
   
+    <a href="/2019/07/05/pregame/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">博弈基本理论</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
