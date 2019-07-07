@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>LRUcache | 三土随笔</title>
+  <title>LRU缓存机制 | 三土随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LRU缓存机制运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
+  <meta name="description" content="运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LRUcache">
+<meta property="og:title" content="LRU缓存机制">
 <meta property="og:url" content="http://yoursite.com/2019/07/06/LRUcache/index.html">
 <meta property="og:site_name" content="三土随笔">
-<meta property="og:description" content="LRU缓存机制运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
+<meta property="og:description" content="运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-06T10:08:13.261Z">
+<meta property="og:updated_time" content="2019-07-07T02:43:33.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LRUcache">
-<meta name="twitter:description" content="LRU缓存机制运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
+<meta name="twitter:title" content="LRU缓存机制">
+<meta name="twitter:description" content="运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。">
   
     <link rel="alternative" href="/atom.xml" title="三土随笔" type="application/atom+xml">
   
@@ -144,7 +144,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LRUcache
+      LRU缓存机制
     </h1>
   
 
@@ -157,12 +157,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="LRU缓存机制"><a href="#LRU缓存机制" class="headerlink" title="LRU缓存机制"></a>LRU缓存机制</h2><p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。</p>
+        <p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。</p>
 <a id="more"></a>
 <p>获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。<br>写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用的数据值，从而为新的数据值留出空间。</p>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LRUCache cache = new LRUCache( 2 /* 缓存容量 */ );</span><br><span class="line">cache.put(1, 1);</span><br><span class="line">cache.put(2, 2);</span><br><span class="line">cache.get(1); // 返回 1</span><br><span class="line">cache.put(3, 3); // 该操作会使得密钥 2</span><br><span class="line">作废 cache.get(2); // 返回 -1 (未找到)</span><br><span class="line">cache.put(4, 4); // 该操作会使得密钥 1 作废</span><br><span class="line">cache.get(1); // 返回 -1 (未找到)</span><br><span class="line">cache.get(3); // 返回 3</span><br><span class="line">cache.get(4); // 返回 4</span><br></pre></td></tr></table></figure>
 
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class LRUCache &#123;</span><br><span class="line">    LRU cache;</span><br><span class="line"></span><br><span class="line">    public LRUCache(int capacity) &#123;</span><br><span class="line">        this.cache = new LRU(capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int get(int key) &#123;</span><br><span class="line">        <span class="keyword">if</span> (cache.containsKey(key)) &#123;</span><br><span class="line">            <span class="built_in">return</span> cache.get(key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void put(int key, int value) &#123;</span><br><span class="line">        put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class LRU extends LinkedHashMap&lt;Integer, Integer&gt; &#123;</span><br><span class="line">        int capacity;</span><br><span class="line"></span><br><span class="line">        //加载因子默认为0.75，当Map中的数据量达到总容量的75%时，其容量空间自动扩容量。</span><br><span class="line">        //访问节点时，使之成为尾部节点</span><br><span class="line">        public LRU(int capacity) &#123;</span><br><span class="line">            super(capacity, 0.75f, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //当LinkedHashmap添加元素后，会调用removeEldestEntry防范，方法返回<span class="literal">true</span>时最久的键值会被删除</span><br><span class="line">        @Override</span><br><span class="line">        protected boolean removeEldestEntry(Map.Entry eldest) &#123;</span><br><span class="line">            <span class="built_in">return</span> this.size() &gt; this.capacity;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class LRUCache &#123;</span><br><span class="line">    LRU cache;</span><br><span class="line"></span><br><span class="line">    public LRUCache(int capacity) &#123;</span><br><span class="line">        this.cache = new LRU(capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int get(int key) &#123;</span><br><span class="line">        <span class="keyword">if</span> (cache.containsKey(key)) &#123;</span><br><span class="line">            <span class="built_in">return</span> cache.get(key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void put(int key, int value) &#123;</span><br><span class="line">        put(key, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public class LRU extends LinkedHashMap&lt;Integer, Integer&gt; &#123;</span><br><span class="line">        int capacity;</span><br><span class="line"></span><br><span class="line">        //加载因子默认为0.75，当Map中的数据量达到总容量的75%时，其容量空间自动扩容量。</span><br><span class="line">        //访问节点时，使之成为尾部节点</span><br><span class="line">        public LRU(int capacity) &#123;</span><br><span class="line">            super(capacity, 0.75f, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //当LinkedHashmap添加元素后，会调用removeEldestEntry防范，方法返回<span class="literal">true</span>时最久的键值会被删除</span><br><span class="line">        @Override</span><br><span class="line">        protected boolean removeEldestEntry(Map.Entry eldest) &#123;</span><br><span class="line">            <span class="built_in">return</span> this.size() &gt; this.capacity;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -412,11 +412,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博弈</a>
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+                <a href="javascript:void(0)" class="js-tag color3">博弈</a>
               </li>
             
             <div class="clearfix"></div>
