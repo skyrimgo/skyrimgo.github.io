@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>数据库知识（上） | 咸鱼笔记本</title>
+  <title>数据库知识（下） | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于数据库设计过程中一些知识点。">
+  <meta name="description" content="关于数据库设计过程中的一些知识。 MyISAM与InnoDB关于锁方面的区别MyISAM使用的是表级锁。 InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。 共享锁和排他锁共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。 排他锁/写锁/X锁，其他事务不能再加锁。select  from是普通查询没有锁机制。 乐观锁和悲观锁悲观锁：数据库级的锁保证">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库知识（上）">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/sql/index.html">
+<meta property="og:title" content="数据库知识（下）">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/sql-2/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
-<meta property="og:description" content="关于数据库设计过程中一些知识点。">
+<meta property="og:description" content="关于数据库设计过程中的一些知识。 MyISAM与InnoDB关于锁方面的区别MyISAM使用的是表级锁。 InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。 共享锁和排他锁共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。 排他锁/写锁/X锁，其他事务不能再加锁。select  from是普通查询没有锁机制。 乐观锁和悲观锁悲观锁：数据库级的锁保证">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:54:43.506Z">
+<meta property="og:updated_time" content="2019-07-12T13:43:28.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库知识（上）">
-<meta name="twitter:description" content="关于数据库设计过程中一些知识点。">
+<meta name="twitter:title" content="数据库知识（下）">
+<meta name="twitter:description" content="关于数据库设计过程中的一些知识。 MyISAM与InnoDB关于锁方面的区别MyISAM使用的是表级锁。 InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。 共享锁和排他锁共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。 排他锁/写锁/X锁，其他事务不能再加锁。select  from是普通查询没有锁机制。 乐观锁和悲观锁悲观锁：数据库级的锁保证">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -137,54 +137,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sql" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sql-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数据库知识（上）
+      数据库知识（下）
     </h1>
   
 
         
-        <a href="/2019/07/12/sql/" class="archive-article-date">
-  	<time datetime="2019-07-12T07:55:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+        <a href="/2019/07/12/sql-2/" class="archive-article-date">
+  	<time datetime="2019-07-12T12:51:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于数据库设计过程中一些知识点。</p>
-<a id="more"></a>
-<h3 id="关系型数据库设计"><a href="#关系型数据库设计" class="headerlink" title="关系型数据库设计"></a>关系型数据库设计</h3><p>1、存储管理：将数据的逻辑关系转换为物理存储关系。</p>
-<p>2、缓存机制：优化执行效率。</p>
-<p>3、SQL解析。</p>
-<p>4、日志管理：记录操作，用于恢复数据。</p>
-<p>5、权限划分：多用户管理模块。</p>
-<p>6、容灾机制：用于灾难恢复。</p>
-<p>7、优化数据库查询效率：索引管理。</p>
-<p>8、并发操作：锁管理。</p>
-<h3 id="索引模块"><a href="#索引模块" class="headerlink" title="索引模块"></a>索引模块</h3><p>目的：提高查询效率，避免全表扫描。</p>
-<p>主键，唯一键，普通键可作为索引。</p>
-<h3 id="索引模块的数据结构"><a href="#索引模块的数据结构" class="headerlink" title="索引模块的数据结构"></a>索引模块的数据结构</h3><p>二叉查找树：平衡二叉树，红黑树。</p>
-<p>B-tree</p>
-<p>B+-tree（主流）：1、子树指针个数等于关键字。2、数据保存在叶子节点中。3、叶子节点的链指针指向下一个叶子节点。</p>
-<p>哈希结构：效率较高，不能排序，不能范围查询，不能使用部分索引查询，不能避免表扫描。</p>
-<p>BitMap（Oracle支持）</p>
-<h3 id="密集索引与稀疏索引"><a href="#密集索引与稀疏索引" class="headerlink" title="密集索引与稀疏索引"></a>密集索引与稀疏索引</h3><p>密集索引的每个搜索码都对应一个索引值。</p>
-<p>稀疏索引只为索引码的某些值建立索引项。</p>
-<p>InnoDB（密集）：非主键索引存储相关键位和对应的主键值，包含两次查找。</p>
-<p>MyISAM（稀疏）。</p>
-<h3 id="定位并优化慢查询"><a href="#定位并优化慢查询" class="headerlink" title="定位并优化慢查询"></a>定位并优化慢查询</h3><p>打开慢查询日志并设置慢查询时限。</p>
-<p>使用Explain语句分析：<br>1、Type属性为index或all，需要优化。2、extra为文件排序或临时表，需要优化。</p>
-<p>修改sql或尽量让sql走查询。</p>
-<h3 id="最左匹配原则"><a href="#最左匹配原则" class="headerlink" title="最左匹配原则"></a>最左匹配原则</h3><p>mysql会一直向右知道遇到范围查询就停止匹配。</p>
-<h3 id="索引越多越好吗？"><a href="#索引越多越好吗？" class="headerlink" title="索引越多越好吗？"></a>索引越多越好吗？</h3><p>数据量小的表不需要索引。</p>
-<p>需要维护成本。</p>
-<p>创建索引需要空间。</p>
+        <p>关于数据库设计过程中的一些知识。</p>
+<h3 id="MyISAM与InnoDB关于锁方面的区别"><a href="#MyISAM与InnoDB关于锁方面的区别" class="headerlink" title="MyISAM与InnoDB关于锁方面的区别"></a>MyISAM与InnoDB关于锁方面的区别</h3><p>MyISAM使用的是表级锁。</p>
+<p>InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。</p>
+<h3 id="共享锁和排他锁"><a href="#共享锁和排他锁" class="headerlink" title="共享锁和排他锁"></a>共享锁和排他锁</h3><p>共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。</p>
+<p>排他锁/写锁/X锁，其他事务不能再加锁。select  from是普通查询没有锁机制。</p>
+<h3 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h3><p>悲观锁：数据库级的锁保证排他性，效率低。</p>
+<p>乐观锁：在数据提交更新的时候对数据的冲突检测提交更新。</p>
+<h3 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h3><p>Atomic  原子性</p>
+<p>Consistency  一致性</p>
+<p>Isolation  隔离性</p>
+<p>Durability  持久性</p>
+<h3 id="事务的隔离级别以及各级别下的并发访问问题"><a href="#事务的隔离级别以及各级别下的并发访问问题" class="headerlink" title="事务的隔离级别以及各级别下的并发访问问题"></a>事务的隔离级别以及各级别下的并发访问问题</h3><p>更新丢失：mysql所有的事务隔离级别都能实现。</p>
+<p>脏读：事务A还未提交数据时，事务B使用了这个数据（RC避免）。</p>
+<p>不可重复读：事务A读取数据过程中事务B改变数据，导致A操作的数据值不同（RR避免）。</p>
+<p>幻读：事务B以插入或删除行的形式修改A查询的数据集（SERIALIZABLE避免）。</p>
+<p>事务隔离级别由低到高：未提交读，已提交读（RC），可重复读（RR），串行化。</p>
+<h3 id="快照读和当前读"><a href="#快照读和当前读" class="headerlink" title="快照读和当前读"></a>快照读和当前读</h3><p>快照读：简单的select操作。</p>
+<p>当前读（如下）：</p>
+<p>select * lock in share mode</p>
+<p>select * for update</p>
+<p>insert，update，delete</p>
+<h3 id="RC-RR级别下的快照读-非阻塞读"><a href="#RC-RR级别下的快照读-非阻塞读" class="headerlink" title="RC/RR级别下的快照读/非阻塞读"></a>RC/RR级别下的快照读/非阻塞读</h3><p>数据行里包括：1、最后一次修改的事务ID；2、回滚指针；3、行ID</p>
+<p>undo日志：1、insert undo log；2、update undo log</p>
+<p>read view：可见性判断，通过回滚指针指向的行ID取出之前的事务ID进行比较，保证获取的版本是当前最稳定的版本。</p>
+<h3 id="InnoDB在RR级别下避免幻读"><a href="#InnoDB在RR级别下避免幻读" class="headerlink" title="InnoDB在RR级别下避免幻读"></a>InnoDB在RR级别下避免幻读</h3><p>表象：快照读（非阻塞读）–伪MVCC</p>
+<p>内在：net-key锁。（行锁加gap锁）</p>
+<h3 id="gap锁的目的"><a href="#gap锁的目的" class="headerlink" title="gap锁的目的"></a>gap锁的目的</h3><p>防止同一事务的两次当前读出现幻读。</p>
+<p>除了对唯一索引的唯一搜索外都会获取gap锁。</p>
 
       
 
@@ -254,7 +254,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/12/sql/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/12/sql-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -268,18 +268,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/12/sql-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据库知识（下）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/10/Web-Interview-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络知识（下）</div>
+    <a href="/2019/07/12/sql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据库知识（上）</div>
       <i class="icon-circle-right"></i>
     </a>
   
