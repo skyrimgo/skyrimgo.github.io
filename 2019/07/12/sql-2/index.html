@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>数据库知识（下） | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于数据库设计过程中的一些知识。 MyISAM与InnoDB关于锁方面的区别MyISAM使用的是表级锁。 InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。 共享锁和排他锁共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。 排他锁/写锁/X锁，其他事务不能再加锁。select  from是普通查询没有锁机制。 乐观锁和悲观锁悲观锁：数据库级的锁保证">
+  <meta name="description" content="关于数据库设计过程中的一些知识。">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库知识（下）">
 <meta property="og:url" content="http://yoursite.com/2019/07/12/sql-2/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
-<meta property="og:description" content="关于数据库设计过程中的一些知识。 MyISAM与InnoDB关于锁方面的区别MyISAM使用的是表级锁。 InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。 共享锁和排他锁共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。 排他锁/写锁/X锁，其他事务不能再加锁。select  from是普通查询没有锁机制。 乐观锁和悲观锁悲观锁：数据库级的锁保证">
+<meta property="og:description" content="关于数据库设计过程中的一些知识。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T13:43:28.481Z">
+<meta property="og:updated_time" content="2019-07-12T13:45:10.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库知识（下）">
-<meta name="twitter:description" content="关于数据库设计过程中的一些知识。 MyISAM与InnoDB关于锁方面的区别MyISAM使用的是表级锁。 InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。 共享锁和排他锁共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。 排他锁/写锁/X锁，其他事务不能再加锁。select  from是普通查询没有锁机制。 乐观锁和悲观锁悲观锁：数据库级的锁保证">
+<meta name="twitter:description" content="关于数据库设计过程中的一些知识。">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -158,6 +158,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>关于数据库设计过程中的一些知识。</p>
+<a id="more"></a>
 <h3 id="MyISAM与InnoDB关于锁方面的区别"><a href="#MyISAM与InnoDB关于锁方面的区别" class="headerlink" title="MyISAM与InnoDB关于锁方面的区别"></a>MyISAM与InnoDB关于锁方面的区别</h3><p>MyISAM使用的是表级锁。</p>
 <p>InnoDB默认使用的是行级锁和表级锁（只有通过索引检索数据时，才会使用行级锁）。</p>
 <h3 id="共享锁和排他锁"><a href="#共享锁和排他锁" class="headerlink" title="共享锁和排他锁"></a>共享锁和排他锁</h3><p>共享锁/读锁/S锁，多个事务只能读数据，可以加共享锁，不能加排他锁。</p>
