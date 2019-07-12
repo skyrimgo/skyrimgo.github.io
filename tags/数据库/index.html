@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>计算机网络知识（下） | 咸鱼笔记本</title>
+  <title>Tag: 数据库 | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一些关于计算机网络的基础知识。">
-<meta name="keywords" content="计算机网络">
-<meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络知识（下）">
-<meta property="og:url" content="http://yoursite.com/2019/07/10/Web-Interview-2/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="咸鱼笔记本">
+<meta property="og:url" content="http://yoursite.com/tags/数据库/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
-<meta property="og:description" content="一些关于计算机网络的基础知识。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-10T02:56:55.181Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机网络知识（下）">
-<meta name="twitter:description" content="一些关于计算机网络的基础知识。">
+<meta name="twitter:title" content="咸鱼笔记本">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -137,186 +132,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Web-Interview-2" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      计算机网络知识（下）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/07/12/sql/" class="archive-article-date">
+  	<time datetime="2019-07-12T07:55:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/07/12/sql/">数据库知识（上）</a>
     </h1>
   
 
-        
-        <a href="/2019/07/10/Web-Interview-2/" class="archive-article-date">
-  	<time datetime="2019-07-10T02:52:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一些关于计算机网络的基础知识。</p>
-<a id="more"></a>
-<h3 id="UDP简介"><a href="#UDP简介" class="headerlink" title="UDP简介"></a>UDP简介</h3><p>面向非连接。</p>
-<p>不维护连接。</p>
-<p>数据包的报头8个字节，额外开销小。</p>
-<p>吞吐量受数据生成，传输，机器性能的影响。</p>
-<p>不保证可靠交付。</p>
-<p>面向报文，不对报文信息拆分或合并。</p>
-<h3 id="TCP滑动窗口"><a href="#TCP滑动窗口" class="headerlink" title="TCP滑动窗口"></a>TCP滑动窗口</h3><p>用途：用于传输时流量控制，避免拥塞。</p>
-<p>发送窗口只有收到接收端的ACK确认才会移动左边界。</p>
-<p>接收端在前面的段都确认的情况下才会移动左边界。</p>
-<h3 id="RTT和RTO"><a href="#RTT和RTO" class="headerlink" title="RTT和RTO"></a>RTT和RTO</h3><p>RTT：发送数据包到收到对应ACK的时间。</p>
-<p>RTO：重传时间间隔。</p>
-<h3 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="HTTP简介"></a>HTTP简介</h3><p>支持Client/Server模式。</p>
-<p>简单快速灵活。</p>
-<p>无连接（每次只维护一个请求）。</p>
-<p>无状态（无记忆功能）。</p>
-<h3 id="地址栏键入URL，按下回车的过程"><a href="#地址栏键入URL，按下回车的过程" class="headerlink" title="地址栏键入URL，按下回车的过程"></a>地址栏键入URL，按下回车的过程</h3><p>DNS解析：浏览器，系统，路由器，IPS服务器，域名服务器。</p>
-<p>建立TCP连接。</p>
-<p>发送HTTP请求。</p>
-<p>服务器处理请求并返回HTTP报文。</p>
-<p>浏览器渲染界面。</p>
-<h3 id="常用状态码"><a href="#常用状态码" class="headerlink" title="常用状态码"></a>常用状态码</h3><p>200：一切正常。</p>
-<p>3XX：页面重定向。</p>
-<p>403：权限不足。</p>
-<p>404：资源不存在。</p>
-<p>500：服务器内部错误。</p>
-<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><p>需要CA申请证书。</p>
-<p>密文传输。</p>
-<p>HTTPS默认端口443；HTTP默认端口80。</p>
-<p>HTTPS=HTTP+加密+认证+完整性保护。</p>
-<h3 id="Socket简介"><a href="#Socket简介" class="headerlink" title="Socket简介"></a>Socket简介</h3><p>TCP/IP协议的抽象，是操作系统对外开放的接口（熟悉代码实现）。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/10/Web-Interview-2/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/07/12/sql/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据库知识（上）
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/09/Web-Interview/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络知识（上）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -339,9 +208,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

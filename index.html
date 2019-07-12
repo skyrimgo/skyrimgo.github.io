@@ -134,6 +134,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/12/sql/">数据库知识（上）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/12/sql/" class="archive-article-date">
+  	<time datetime="2019-07-12T07:55:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="关系型数据库设计"><a href="#关系型数据库设计" class="headerlink" title="关系型数据库设计"></a>关系型数据库设计</h3><p>1、存储管理：将数据的逻辑关系转换为物理存储关系。</p>
+<p>2、缓存机制：优化执行效率。</p>
+<p>3、SQL解析。</p>
+<p>4、日志管理：记录操作，用于恢复数据。</p>
+<p>5、权限划分：多用户管理模块。</p>
+<p>6、容灾机制：用于灾难恢复。</p>
+<p>7、优化数据库查询效率：索引管理。</p>
+<p>8、并发操作：锁管理。</p>
+<h3 id="索引模块"><a href="#索引模块" class="headerlink" title="索引模块"></a>索引模块</h3><p>目的：提高查询效率，避免全表扫描。</p>
+<p>主键，唯一键，普通键可作为索引。</p>
+<h3 id="索引模块的数据结构"><a href="#索引模块的数据结构" class="headerlink" title="索引模块的数据结构"></a>索引模块的数据结构</h3><p>二叉查找树：平衡二叉树，红黑树。</p>
+<p>B-tree</p>
+<p>B+-tree（主流）：1、子树指针个数等于关键字。2、数据保存在叶子节点中。3、叶子节点的链指针指向下一个叶子节点。</p>
+<p>哈希结构：效率较高，不能排序，不能范围查询，不能使用部分索引查询，不能避免表扫描。</p>
+<p>BitMap（Oracle支持）</p>
+<h3 id="密集索引与稀疏索引"><a href="#密集索引与稀疏索引" class="headerlink" title="密集索引与稀疏索引"></a>密集索引与稀疏索引</h3><p>密集索引的每个搜索码都对应一个索引值。</p>
+<p>稀疏索引只为索引码的某些值建立索引项。</p>
+<p>InnoDB（密集）：非主键索引存储相关键位和对应的主键值，包含两次查找。</p>
+<p>MyISAM（稀疏）。</p>
+<h3 id="定位并优化慢查询"><a href="#定位并优化慢查询" class="headerlink" title="定位并优化慢查询"></a>定位并优化慢查询</h3><p>打开慢查询日志并设置慢查询时限。</p>
+<p>使用Explain语句分析：<br>1、Type属性为index或all，需要优化。2、extra为文件排序或临时表，需要优化。</p>
+<p>修改sql或尽量让sql走查询。</p>
+<h3 id="最左匹配原则"><a href="#最左匹配原则" class="headerlink" title="最左匹配原则"></a>最左匹配原则</h3><p>mysql会一直向右知道遇到范围查询就停止匹配。</p>
+<h3 id="索引越多越好吗？"><a href="#索引越多越好吗？" class="headerlink" title="索引越多越好吗？"></a>索引越多越好吗？</h3><p>数据量小的表不需要索引。</p>
+<p>需要维护成本。</p>
+<p>创建索引需要空间。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/12/sql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Web-Interview-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -935,19 +1034,23 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博弈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
               </li>
             
             <div class="clearfix"></div>
