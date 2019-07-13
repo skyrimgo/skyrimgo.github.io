@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>咸鱼笔记本</title>
+  <title>Redis（上） | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="咸鱼笔记本">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="一个高性能的key-value数据库。">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis（上）">
+<meta property="og:url" content="http://yoursite.com/2019/07/13/redis/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
+<meta property="og:description" content="一个高性能的key-value数据库。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-13T06:14:42.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="咸鱼笔记本">
+<meta name="twitter:title" content="Redis（上）">
+<meta name="twitter:description" content="一个高性能的key-value数据库。">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -132,32 +137,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-GA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-redis" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/01/GA/">遗传算法（GA）</a>
+    <h1 class="article-title" itemprop="name">
+      Redis（上）
     </h1>
   
 
         
-        <a href="/2019/07/01/GA/" class="archive-article-date">
-  	<time datetime="2019-07-01T06:15:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+        <a href="/2019/07/13/redis/" class="archive-article-date">
+  	<time datetime="2019-07-13T00:55:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>遗传算法（Genetic Algorithm）是模拟达尔文生物进化论的自然选择和遗传学机理的生物进化过程的计算模型，是一种通过模拟自然进化过程搜索最优解的方法。</p>
-        
-          <a class="article-more-a" href="/2019/07/01/GA/#more">more >></a>
-        
+        <p>一个高性能的key-value数据库。</p>
+<a id="more"></a>
+<h3 id="缓存中间件–Memcache和Redis"><a href="#缓存中间件–Memcache和Redis" class="headerlink" title="缓存中间件–Memcache和Redis"></a>缓存中间件–Memcache和Redis</h3><p>Redis优点：1、数据类型丰富。2、支持数据持久化存储。3、主持主从。4支持分片。</p>
+<h3 id="为什么Redis这么快"><a href="#为什么Redis这么快" class="headerlink" title="为什么Redis这么快"></a>为什么Redis这么快</h3><p>完全基于内存的操作。</p>
+<p>数据结构简单，对数据的操作也简单。</p>
+<p>单线程（避免并发问题）。</p>
+<p>多路复用I/O模型。</p>
+<h3 id="多路复用IO模型"><a href="#多路复用IO模型" class="headerlink" title="多路复用IO模型"></a>多路复用IO模型</h3><p>基于react设计模式监听I/O事件。</p>
+<p>Redis采用的多路复用函数：epoll/kqueue/evport/select。</p>
+<p>优先使用时间复杂度为O(1)的多路复用函数，以时间复杂度为O(n)的select作为保底。</p>
+<h3 id="Redis的数据类型"><a href="#Redis的数据类型" class="headerlink" title="Redis的数据类型"></a>Redis的数据类型</h3><p>1、String</p>
+<p>2、HashMap</p>
+<p>3、List</p>
+<p>4、Set</p>
+<p>5、Sorted Set</p>
+<p>6、用于计数的HyperLoglog，用于存储地理信息的Geo</p>
+<h3 id="从海量key中查询固定前缀的key"><a href="#从海量key中查询固定前缀的key" class="headerlink" title="从海量key中查询固定前缀的key"></a>从海量key中查询固定前缀的key</h3><p>KEYS pattern：一次性返回所有的key，但是键值过大容易造成卡顿。</p>
+<p>SCAN cursor [MATCH pattern] [COUNT count]:基于cursor的迭代器，以cursor为游标开始迭代，支持模糊查询，不保证每次都能返回count个。</p>
+<h3 id="通过Redis实现分布式锁"><a href="#通过Redis实现分布式锁" class="headerlink" title="通过Redis实现分布式锁"></a>通过Redis实现分布式锁</h3><p>SET key value [EX seconds][PX milliseconds] [NX|XX]</p>
+<p>EX:设置过期时间（秒）。</p>
+<p>PX：设置过期时间（毫秒）。</p>
+<p>NX：键不存在时才设置。</p>
+<p>XX：键存在时才设置。</p>
+<p>成功时返回OK，否则返回nil</p>
+<h3 id="分布式锁需要解决的问题"><a href="#分布式锁需要解决的问题" class="headerlink" title="分布式锁需要解决的问题"></a>分布式锁需要解决的问题</h3><p>互斥性：任意时间只能有一个客户端获取资源。</p>
+<p>安全性：不能由其他客户端删除。</p>
+<p>死锁：机制避免。</p>
+<p>容错：Redis宕机仍能释放锁和获取锁。</p>
+<h3 id="大量key同时过期"><a href="#大量key同时过期" class="headerlink" title="大量key同时过期"></a>大量key同时过期</h3><p>日期加上随机值，分散处理。</p>
+
       
 
       
@@ -170,7 +199,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -179,16 +208,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/01/GA/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/13/redis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/12/sql-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据库知识（下）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -208,88 +296,14 @@
 
 
 
-
-  
-    <article id="post-PSO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/01/PSO/">粒子群算法（PSO）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/01/PSO/" class="archive-article-date">
-  	<time datetime="2019-07-01T00:30:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>利用群体中的个体对信息的共享使整个群体的运动在问题求解空间中产生从无序到有序的演化过程，从而获得最优解。</p>
-        
-          <a class="article-more-a" href="/2019/07/01/PSO/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/01/PSO/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -312,8 +326,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
