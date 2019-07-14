@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>数据库知识（上） | 咸鱼笔记本</title>
+  <title>redis（下） | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于数据库设计过程中一些知识点。">
-<meta name="keywords" content="数据库">
+  <meta name="description" content="一个高性能的key-value数据库。">
+<meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库知识（上）">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/sql/index.html">
+<meta property="og:title" content="redis（下）">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/redis-2/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
-<meta property="og:description" content="关于数据库设计过程中一些知识点。">
+<meta property="og:description" content="一个高性能的key-value数据库。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T08:54:43.506Z">
+<meta property="og:updated_time" content="2019-07-14T13:28:55.878Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库知识（上）">
-<meta name="twitter:description" content="关于数据库设计过程中一些知识点。">
+<meta name="twitter:title" content="redis（下）">
+<meta name="twitter:description" content="一个高性能的key-value数据库。">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -137,54 +137,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sql" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-redis-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数据库知识（上）
+      redis（下）
     </h1>
   
 
         
-        <a href="/2019/07/12/sql/" class="archive-article-date">
-  	<time datetime="2019-07-12T07:55:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+        <a href="/2019/07/14/redis-2/" class="archive-article-date">
+  	<time datetime="2019-07-14T11:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于数据库设计过程中一些知识点。</p>
+        <p>一个高性能的key-value数据库。</p>
 <a id="more"></a>
-<h3 id="关系型数据库设计"><a href="#关系型数据库设计" class="headerlink" title="关系型数据库设计"></a>关系型数据库设计</h3><p>1、存储管理：将数据的逻辑关系转换为物理存储关系。</p>
-<p>2、缓存机制：优化执行效率。</p>
-<p>3、SQL解析。</p>
-<p>4、日志管理：记录操作，用于恢复数据。</p>
-<p>5、权限划分：多用户管理模块。</p>
-<p>6、容灾机制：用于灾难恢复。</p>
-<p>7、优化数据库查询效率：索引管理。</p>
-<p>8、并发操作：锁管理。</p>
-<h3 id="索引模块"><a href="#索引模块" class="headerlink" title="索引模块"></a>索引模块</h3><p>目的：提高查询效率，避免全表扫描。</p>
-<p>主键，唯一键，普通键可作为索引。</p>
-<h3 id="索引模块的数据结构"><a href="#索引模块的数据结构" class="headerlink" title="索引模块的数据结构"></a>索引模块的数据结构</h3><p>二叉查找树：平衡二叉树，红黑树。</p>
-<p>B-tree</p>
-<p>B+-tree（主流）：1、子树指针个数等于关键字。2、数据保存在叶子节点中。3、叶子节点的链指针指向下一个叶子节点。</p>
-<p>哈希结构：效率较高，不能排序，不能范围查询，不能使用部分索引查询，不能避免表扫描。</p>
-<p>BitMap（Oracle支持）</p>
-<h3 id="密集索引与稀疏索引"><a href="#密集索引与稀疏索引" class="headerlink" title="密集索引与稀疏索引"></a>密集索引与稀疏索引</h3><p>密集索引的每个搜索码都对应一个索引值。</p>
-<p>稀疏索引只为索引码的某些值建立索引项。</p>
-<p>InnoDB（密集）：非主键索引存储相关键位和对应的主键值，包含两次查找。</p>
-<p>MyISAM（稀疏）。</p>
-<h3 id="定位并优化慢查询"><a href="#定位并优化慢查询" class="headerlink" title="定位并优化慢查询"></a>定位并优化慢查询</h3><p>打开慢查询日志并设置慢查询时限。</p>
-<p>使用Explain语句分析：<br>1、Type属性为index或all，需要优化。2、extra为文件排序或临时表，需要优化。</p>
-<p>修改sql或尽量让sql走查询。</p>
-<h3 id="最左匹配原则"><a href="#最左匹配原则" class="headerlink" title="最左匹配原则"></a>最左匹配原则</h3><p>mysql会一直向右知道遇到范围查询就停止匹配。</p>
-<h3 id="索引越多越好吗？"><a href="#索引越多越好吗？" class="headerlink" title="索引越多越好吗？"></a>索引越多越好吗？</h3><p>数据量小的表不需要索引。</p>
-<p>需要维护成本。</p>
-<p>创建索引需要空间。</p>
+<h3 id="如何通过Redis做异步队列"><a href="#如何通过Redis做异步队列" class="headerlink" title="如何通过Redis做异步队列"></a>如何通过Redis做异步队列</h3><p>lpush 生产消息</p>
+<p>lpop/blpop 消费消息</p>
+<p>pub/sub：主体订阅模式</p>
+<p>subscribe myTopic 订阅该频道</p>
+<p>publish myTopic “i love u” 推送消息</p>
+<h3 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h3><p>保存某个时间点的全量数据快照。</p>
+<p>save [TIME time][COUNT count] 在时间内有count条指令则产生一次快照。</p>
+<p>Redis每个时间段的读写请求不均衡，为了平衡数据安全和性能进行合理配置，可以有多个save。</p>
+<h3 id="SAVE和BGSAVE"><a href="#SAVE和BGSAVE" class="headerlink" title="SAVE和BGSAVE"></a>SAVE和BGSAVE</h3><p>SAVE：阻塞Redis服务进程，直到RDB文件被创建。</p>
+<p>BGSAVE：Fork一个子进程来创建RDB文件，不会阻塞Redis服务器进程。</p>
+<h3 id="自动触发RDB持久化的方式"><a href="#自动触发RDB持久化的方式" class="headerlink" title="自动触发RDB持久化的方式"></a>自动触发RDB持久化的方式</h3><p>根据配置文件中的save m n定时触发。</p>
+<p>主从复制时，主节点自动触发。</p>
+<p>执行Debug Reload。</p>
+<p>执行Shutdown且没有开启AOF持久化。</p>
+<h3 id="RDB持久化的缺点"><a href="#RDB持久化的缺点" class="headerlink" title="RDB持久化的缺点"></a>RDB持久化的缺点</h3><p>内存数据全量同步，大量IO影响性能。</p>
+<p>可能会因为Redis挂掉丢失数据。</p>
+<h3 id="AOF持久化"><a href="#AOF持久化" class="headerlink" title="AOF持久化"></a>AOF持久化</h3><p>保存写状态。</p>
+<p>记录除了查询以外的数据库指令。</p>
+<p>以append形式追加到AOF文件中。</p>
+<h3 id="开启AOF"><a href="#开启AOF" class="headerlink" title="开启AOF"></a>开启AOF</h3><p>设置配置文件中appendonly为yes。</p>
+<p>有always，everysec，no三种工作方式。</p>
+<h3 id="AOF文件不断变大"><a href="#AOF文件不断变大" class="headerlink" title="AOF文件不断变大"></a>AOF文件不断变大</h3><p>fork()子进程重写AOF同步增量变动。</p>
+<h3 id="RDB和AOF混合持久方式"><a href="#RDB和AOF混合持久方式" class="headerlink" title="RDB和AOF混合持久方式"></a>RDB和AOF混合持久方式</h3><p>BGSAVE做镜像全量持久化。</p>
+<p>AOF做增量持久化。</p>
+<h3 id="使用Pipeline的好处"><a href="#使用Pipeline的好处" class="headerlink" title="使用Pipeline的好处"></a>使用Pipeline的好处</h3><p>批量执行指令，节省多次IO往返的时间。</p>
+<h3 id="Redis-Sentinel"><a href="#Redis-Sentinel" class="headerlink" title="Redis Sentinel"></a>Redis Sentinel</h3><p>解决主从同步Master宕机后的主从切换问题。</p>
+<h3 id="流言协议gossip"><a href="#流言协议gossip" class="headerlink" title="流言协议gossip"></a>流言协议gossip</h3><p>在杂乱无章中寻求一致。</p>
+<h3 id="海量数据的快速查找"><a href="#海量数据的快速查找" class="headerlink" title="海量数据的快速查找"></a>海量数据的快速查找</h3><p>分片：数据分散存储在多个节点上。</p>
+<p>缺点：无法实现节点的动态增减。</p>
+<p>解决：一致性哈希算法。</p>
+<p>缺点：数据倾斜问题。</p>
+<p>解决：引入虚拟节点。</p>
 
       
 
@@ -198,7 +204,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -254,7 +260,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/12/sql/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/14/redis-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -268,18 +274,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/12/sql-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据库知识（下）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/10/Web-Interview-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络知识（下）</div>
+    <a href="/2019/07/13/redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis（上）</div>
       <i class="icon-circle-right"></i>
     </a>
   
