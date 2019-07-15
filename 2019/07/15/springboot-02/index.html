@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>计算机网络知识（上） | 咸鱼笔记本</title>
+  <title>配置文件-yaml简介 | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一些关于计算机网络的基础知识。">
-<meta name="keywords" content="计算机网络">
+  <meta name="description" content="以数据为中心，更适合做配置文件。">
+<meta name="keywords" content="spring-boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络知识（上）">
-<meta property="og:url" content="http://yoursite.com/2019/07/09/Web-Interview/index.html">
+<meta property="og:title" content="配置文件-yaml简介">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/springboot-02/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
-<meta property="og:description" content="一些关于计算机网络的基础知识。">
+<meta property="og:description" content="以数据为中心，更适合做配置文件。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-10T02:56:53.597Z">
+<meta property="og:updated_time" content="2019-07-15T06:43:47.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机网络知识（上）">
-<meta name="twitter:description" content="一些关于计算机网络的基础知识。">
+<meta name="twitter:title" content="配置文件-yaml简介">
+<meta name="twitter:description" content="以数据为中心，更适合做配置文件。">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -137,55 +137,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Web-Interview" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-springboot-02" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      计算机网络知识（上）
+      配置文件-yaml简介
     </h1>
   
 
         
-        <a href="/2019/07/09/Web-Interview/" class="archive-article-date">
-  	<time datetime="2019-07-09T12:41:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
+        <a href="/2019/07/15/springboot-02/" class="archive-article-date">
+  	<time datetime="2019-07-15T05:51:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一些关于计算机网络的基础知识。</p>
+        <p>以数据为中心，更适合做配置文件。</p>
 <a id="more"></a>
-<h3 id="ISO-OSI模型"><a href="#ISO-OSI模型" class="headerlink" title="ISO/OSI模型"></a>ISO/OSI模型</h3><p>应用层（http）：固定长度的消息头固定组成。</p>
-<p>表示层：解决不同系统之间的语法问题。</p>
-<p>会话层：建立和管理应用程序间的通信。</p>
-<p>传输层（TCP/UDP）：解决了主机之间数据传输和质量问题。</p>
-<p>网络层（IP）：将网络地址翻译成物理地址，数据由发送方路由到接收方。</p>
-<p>数据链路层：控制纠错，访问。</p>
-<p>物理层：物理机之间的信号传输（比特流）。</p>
-<h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3><p>1、源主机向目标主机发送SYN=1同步信号，seq=x序列号。</p>
-<p>2、目标主机向源主机返回ACK=1确认信号，seq=x+1序列号。</p>
-<p>3、源主机向目标主机发送ACK=1确认信号，双方进入“ESTABLISHED”状态。</p>
-<h3 id="为什么需要三次握手"><a href="#为什么需要三次握手" class="headerlink" title="为什么需要三次握手"></a>为什么需要三次握手</h3><p>初始化Number sequence的值。保证应用层接收到的数据不会因为网络传输问题而乱序。</p>
-<h3 id="首次握手的隐患"><a href="#首次握手的隐患" class="headerlink" title="首次握手的隐患"></a>首次握手的隐患</h3><p>SYN超时。</p>
-<p>起因：Server受到Client的SYN，回复SYN-ACK时没有收到ACK确认。</p>
-<h3 id="针对SYNFlood的防护"><a href="#针对SYNFlood的防护" class="headerlink" title="针对SYNFlood的防护"></a>针对SYNFlood的防护</h3><p>SYN队列满了之后，通过tcp-syncookies参数（目标短裤，源端口，时间戳）回发SYN Cookies。</p>
-<p>若为正常，则Client会回发SYN Cookies，直至建立连接。</p>
-<h3 id="建立连接后Client故障"><a href="#建立连接后Client故障" class="headerlink" title="建立连接后Client故障"></a>建立连接后Client故障</h3><p>保活机制：<br>向对方发送保活探测报文，尝试次数达到保活探测数仍未收到响应则中断连接。</p>
-<h3 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h3><p>1、Client发送FIN，关闭Client到Server的数据传送。</p>
-<p>2、Server发送ACK。</p>
-<p>3、Server发送FIN，关闭Server到Client的数据传送。</p>
-<p>4、Client发送ACK。</p>
-<h3 id="TIME-WAIT状态"><a href="#TIME-WAIT状态" class="headerlink" title="TIME_WAIT状态"></a>TIME_WAIT状态</h3><p>确保有足够的时间收到ACK包。</p>
-<p>避免新旧连接混淆。</p>
-<h3 id="服务器大量CLOSE-WAIT状态"><a href="#服务器大量CLOSE-WAIT状态" class="headerlink" title="服务器大量CLOSE_WAIT状态"></a>服务器大量CLOSE_WAIT状态</h3><p>原因：未及时关闭。</p>
-<p>解决方法：检查释放资源的代码。</p>
-<p>检查处理请求的线程配置。</p>
-<h3 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h3><p>netstat：查看系统端口使用情况。</p>
-<p>awk：行处理器。</p>
+<h3 id="YAML语法"><a href="#YAML语法" class="headerlink" title="YAML语法"></a>YAML语法</h3><p>k:（空格）v:空格必须要有，不能省略。<br>以空格的缩进来控制同一层级。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8081</span><br><span class="line">  path: /hello</span><br></pre></td></tr></table></figure>
+
+<p>属性和值大小写敏感</p>
+<h3 id="值的写法"><a href="#值的写法" class="headerlink" title="值的写法"></a>值的写法</h3><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>双引号会转义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"\n"</span></span><br><span class="line">输出：换行</span><br></pre></td></tr></table></figure>
+
+<p>单引号不会转义。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'\n'</span></span><br><span class="line">输出：\n</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象、Map（属性和值）（键值对）："><a href="#对象、Map（属性和值）（键值对）：" class="headerlink" title="对象、Map（属性和值）（键值对）："></a>对象、Map（属性和值）（键值对）：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">friends:</span><br><span class="line">  lastName: name</span><br><span class="line">  age: 20</span><br></pre></td></tr></table></figure>
+
+<p>注意缩进关系</p>
+<p>行内写法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">friedns: (lastName: name,age: 20)</span><br></pre></td></tr></table></figure>
+
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>用-表示数组中的一个元素</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pets:</span><br><span class="line">  - cat</span><br><span class="line">  - dog</span><br></pre></td></tr></table></figure>
+
+<p>行内写法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pets: [cat,dog,pig]</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -199,7 +194,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-boot</a>
         		</li>
       		
 		</ul>
@@ -255,7 +250,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/09/Web-Interview/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/15/springboot-02/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -269,18 +264,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/10/Web-Interview-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          计算机网络知识（下）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/07/VsCode/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">定制VSCode界面</div>
+    <a href="/2019/07/14/redis-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis（下）</div>
       <i class="icon-circle-right"></i>
     </a>
   
