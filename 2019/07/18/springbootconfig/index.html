@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>计算机网络知识（上） | 咸鱼笔记本</title>
+  <title>自定义配置Spring Boot | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一些关于计算机网络的基础知识。">
-<meta name="keywords" content="计算机网络">
+  <meta name="description" content="根据自己的工程需要引入对应的starter之后，对Spring Boot项目进行必要的配置。">
+<meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络知识（上）">
-<meta property="og:url" content="http://yoursite.com/2019/07/09/Web-Interview/index.html">
+<meta property="og:title" content="自定义配置Spring Boot">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/springbootconfig/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
-<meta property="og:description" content="一些关于计算机网络的基础知识。">
+<meta property="og:description" content="根据自己的工程需要引入对应的starter之后，对Spring Boot项目进行必要的配置。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-10T02:56:53.597Z">
+<meta property="og:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/13.png?raw=true">
+<meta property="og:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/14.png">
+<meta property="og:updated_time" content="2019-07-21T08:00:06.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机网络知识（上）">
-<meta name="twitter:description" content="一些关于计算机网络的基础知识。">
+<meta name="twitter:title" content="自定义配置Spring Boot">
+<meta name="twitter:description" content="根据自己的工程需要引入对应的starter之后，对Spring Boot项目进行必要的配置。">
+<meta name="twitter:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/13.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -137,55 +140,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Web-Interview" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-springbootconfig" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      计算机网络知识（上）
+      自定义配置Spring Boot
     </h1>
   
 
         
-        <a href="/2019/07/09/Web-Interview/" class="archive-article-date">
-  	<time datetime="2019-07-09T12:41:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
+        <a href="/2019/07/18/springbootconfig/" class="archive-article-date">
+  	<time datetime="2019-07-18T09:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一些关于计算机网络的基础知识。</p>
+        <p>根据自己的工程需要引入对应的<code>starter</code>之后，对<code>Spring Boot</code>项目进行必要的配置。</p>
 <a id="more"></a>
-<h3 id="ISO-OSI模型"><a href="#ISO-OSI模型" class="headerlink" title="ISO/OSI模型"></a>ISO/OSI模型</h3><p>应用层（http）：固定长度的消息头固定组成。</p>
-<p>表示层：解决不同系统之间的语法问题。</p>
-<p>会话层：建立和管理应用程序间的通信。</p>
-<p>传输层（TCP/UDP）：解决了主机之间数据传输和质量问题。</p>
-<p>网络层（IP）：将网络地址翻译成物理地址，数据由发送方路由到接收方。</p>
-<p>数据链路层：控制纠错，访问。</p>
-<p>物理层：物理机之间的信号传输（比特流）。</p>
-<h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3><p>1、源主机向目标主机发送SYN=1同步信号，seq=x序列号。</p>
-<p>2、目标主机向源主机返回ACK=1确认信号，seq=x+1序列号。</p>
-<p>3、源主机向目标主机发送ACK=1确认信号，双方进入“ESTABLISHED”状态。</p>
-<h3 id="为什么需要三次握手"><a href="#为什么需要三次握手" class="headerlink" title="为什么需要三次握手"></a>为什么需要三次握手</h3><p>初始化Number sequence的值。保证应用层接收到的数据不会因为网络传输问题而乱序。</p>
-<h3 id="首次握手的隐患"><a href="#首次握手的隐患" class="headerlink" title="首次握手的隐患"></a>首次握手的隐患</h3><p>SYN超时。</p>
-<p>起因：Server受到Client的SYN，回复SYN-ACK时没有收到ACK确认。</p>
-<h3 id="针对SYNFlood的防护"><a href="#针对SYNFlood的防护" class="headerlink" title="针对SYNFlood的防护"></a>针对SYNFlood的防护</h3><p>SYN队列满了之后，通过tcp-syncookies参数（目标短裤，源端口，时间戳）回发SYN Cookies。</p>
-<p>若为正常，则Client会回发SYN Cookies，直至建立连接。</p>
-<h3 id="建立连接后Client故障"><a href="#建立连接后Client故障" class="headerlink" title="建立连接后Client故障"></a>建立连接后Client故障</h3><p>保活机制：<br>向对方发送保活探测报文，尝试次数达到保活探测数仍未收到响应则中断连接。</p>
-<h3 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h3><p>1、Client发送FIN，关闭Client到Server的数据传送。</p>
-<p>2、Server发送ACK。</p>
-<p>3、Server发送FIN，关闭Server到Client的数据传送。</p>
-<p>4、Client发送ACK。</p>
-<h3 id="TIME-WAIT状态"><a href="#TIME-WAIT状态" class="headerlink" title="TIME_WAIT状态"></a>TIME_WAIT状态</h3><p>确保有足够的时间收到ACK包。</p>
-<p>避免新旧连接混淆。</p>
-<h3 id="服务器大量CLOSE-WAIT状态"><a href="#服务器大量CLOSE-WAIT状态" class="headerlink" title="服务器大量CLOSE_WAIT状态"></a>服务器大量CLOSE_WAIT状态</h3><p>原因：未及时关闭。</p>
-<p>解决方法：检查释放资源的代码。</p>
-<p>检查处理请求的线程配置。</p>
-<h3 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h3><p>netstat：查看系统端口使用情况。</p>
-<p>awk：行处理器。</p>
+
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>在项目中修改<code>resources</code>文件夹下的<code>application.properties</code>属性文件，通过它，可以根据自己的需要实现自定义。</p>
+<p>例如，默认的8080端口被占用，我们希望通过8081端口启动Tomcat。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port=8081</span><br></pre></td></tr></table></figure>
+
+<p>注：properties文件的优先级高于yaml文件。</p>
+<h3 id="修改控制台的spring图标"><a href="#修改控制台的spring图标" class="headerlink" title="修改控制台的spring图标"></a>修改控制台的spring图标</h3><p>登录<a href="http://www.patorjk.com/software/taag" target="_blank" rel="noopener">网站</a>在线制作ASCII艺术文本。</p>
+<p>将艺术字体复制到<code>banner.txt</code>文件，放到<code>resources</code>文件夹下。</p>
+<p>启动<code>Spring Boot</code>，效果如下：<br><img src="https://github.com/skyrimgo/hexo-asset-image/raw/master/13.png?raw=true" alt></p>
+<h3 id="Thymeleaf配置视图解析"><a href="#Thymeleaf配置视图解析" class="headerlink" title="Thymeleaf配置视图解析"></a>Thymeleaf配置视图解析</h3><p>在配置中加载Thymeleaf插件。</p>
+<p>新建控制器代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package com.szy.springboot.cotroller;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class LoginController &#123;</span><br><span class="line">    @RequestMapping(<span class="string">"/test"</span>)</span><br><span class="line">    public String <span class="function"><span class="title">login</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"OK"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中访问<code>http://localhost:8080/test</code></p>
+<p><img src="https://github.com/skyrimgo/hexo-asset-image/raw/master/14.png" alt></p>
 
       
 
@@ -199,7 +190,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
         		</li>
       		
 		</ul>
@@ -255,7 +246,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/09/Web-Interview/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/18/springbootconfig/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -269,18 +260,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/10/Web-Interview-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          计算机网络知识（下）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/07/VsCode/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">定制VSCode界面</div>
+    <a href="/2019/07/15/springboot-02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">配置文件--yaml简介</div>
       <i class="icon-circle-right"></i>
     </a>
   
