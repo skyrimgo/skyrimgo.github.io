@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="咸鱼笔记本">
 <meta property="og:description" content="一个高性能的key-value数据库。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-13T06:14:42.010Z">
+<meta property="og:updated_time" content="2019-07-22T03:07:40.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis（上）">
 <meta name="twitter:description" content="一个高性能的key-value数据库。">
@@ -157,14 +157,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个高性能的key-value数据库。</p>
+        <p>一个高性能的<code>key-value</code>数据库。</p>
 <a id="more"></a>
 <h3 id="缓存中间件–Memcache和Redis"><a href="#缓存中间件–Memcache和Redis" class="headerlink" title="缓存中间件–Memcache和Redis"></a>缓存中间件–Memcache和Redis</h3><p>Redis优点：1、数据类型丰富。2、支持数据持久化存储。3、主持主从。4支持分片。</p>
 <h3 id="为什么Redis这么快"><a href="#为什么Redis这么快" class="headerlink" title="为什么Redis这么快"></a>为什么Redis这么快</h3><p>完全基于内存的操作。</p>
 <p>数据结构简单，对数据的操作也简单。</p>
 <p>单线程（避免并发问题）。</p>
 <p>多路复用I/O模型。</p>
-<h3 id="多路复用IO模型"><a href="#多路复用IO模型" class="headerlink" title="多路复用IO模型"></a>多路复用IO模型</h3><p>基于react设计模式监听I/O事件。</p>
+<h3 id="多路复用IO模型"><a href="#多路复用IO模型" class="headerlink" title="多路复用IO模型"></a>多路复用IO模型</h3><p>基于<code>react</code>设计模式监听I/O事件。</p>
 <p>Redis采用的多路复用函数：epoll/kqueue/evport/select。</p>
 <p>优先使用时间复杂度为O(1)的多路复用函数，以时间复杂度为O(n)的select作为保底。</p>
 <h3 id="Redis的数据类型"><a href="#Redis的数据类型" class="headerlink" title="Redis的数据类型"></a>Redis的数据类型</h3><p>1、String</p>
@@ -174,8 +174,11 @@
 <p>5、Sorted Set</p>
 <p>6、用于计数的HyperLoglog，用于存储地理信息的Geo</p>
 <h3 id="从海量key中查询固定前缀的key"><a href="#从海量key中查询固定前缀的key" class="headerlink" title="从海量key中查询固定前缀的key"></a>从海量key中查询固定前缀的key</h3><p>KEYS pattern：一次性返回所有的key，但是键值过大容易造成卡顿。</p>
-<p>SCAN cursor [MATCH pattern] [COUNT count]:基于cursor的迭代器，以cursor为游标开始迭代，支持模糊查询，不保证每次都能返回count个。</p>
-<h3 id="通过Redis实现分布式锁"><a href="#通过Redis实现分布式锁" class="headerlink" title="通过Redis实现分布式锁"></a>通过Redis实现分布式锁</h3><p>SET key value [EX seconds][PX milliseconds] [NX|XX]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SCAN cursor [MATCH pattern] [COUNT count]</span><br></pre></td></tr></table></figure>
+
+<p>基于cursor的迭代器，以cursor为游标开始迭代，支持模糊查询，不保证每次都能返回count个。</p>
+<h3 id="通过Redis实现分布式锁"><a href="#通过Redis实现分布式锁" class="headerlink" title="通过Redis实现分布式锁"></a>通过Redis实现分布式锁</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET key value [EX seconds][PX milliseconds] [NX|XX]</span><br></pre></td></tr></table></figure>
+
 <p>EX:设置过期时间（秒）。</p>
 <p>PX：设置过期时间（毫秒）。</p>
 <p>NX：键不存在时才设置。</p>
@@ -434,11 +437,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+                <a href="javascript:void(0)" class="js-tag color3">博弈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博弈</a>
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
               </li>
              
               <li class="article-tag-list-item">

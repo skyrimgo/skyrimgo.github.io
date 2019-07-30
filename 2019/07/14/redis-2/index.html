@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="咸鱼笔记本">
 <meta property="og:description" content="一个高性能的key-value数据库。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-15T07:25:45.873Z">
+<meta property="og:updated_time" content="2019-07-22T03:08:35.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis（下）">
 <meta name="twitter:description" content="一个高性能的key-value数据库。">
@@ -157,7 +157,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个高性能的key-value数据库。</p>
+        <p>一个高性能的<code>key-value</code>数据库。</p>
 <a id="more"></a>
 <h3 id="如何通过Redis做异步队列"><a href="#如何通过Redis做异步队列" class="headerlink" title="如何通过Redis做异步队列"></a>如何通过Redis做异步队列</h3><p>lpush 生产消息</p>
 <p>lpop/blpop 消费消息</p>
@@ -165,14 +165,16 @@
 <p>subscribe myTopic 订阅该频道</p>
 <p>publish myTopic “i love u” 推送消息</p>
 <h3 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h3><p>保存某个时间点的全量数据快照。</p>
-<p>save [TIME time][COUNT count] 在时间内有count条指令则产生一次快照。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save [TIME time][COUNT count]</span><br></pre></td></tr></table></figure>
+
+<p>在时间内有count条指令则产生一次快照。</p>
 <p>Redis每个时间段的读写请求不均衡，为了平衡数据安全和性能进行合理配置，可以有多个save。</p>
 <h3 id="SAVE和BGSAVE"><a href="#SAVE和BGSAVE" class="headerlink" title="SAVE和BGSAVE"></a>SAVE和BGSAVE</h3><p>SAVE：阻塞Redis服务进程，直到RDB文件被创建。</p>
 <p>BGSAVE：Fork一个子进程来创建RDB文件，不会阻塞Redis服务器进程。</p>
 <h3 id="自动触发RDB持久化的方式"><a href="#自动触发RDB持久化的方式" class="headerlink" title="自动触发RDB持久化的方式"></a>自动触发RDB持久化的方式</h3><p>根据配置文件中的save m n定时触发。</p>
 <p>主从复制时，主节点自动触发。</p>
-<p>执行Debug Reload。</p>
-<p>执行Shutdown且没有开启AOF持久化。</p>
+<p>执行<code>Debug Reload</code>。</p>
+<p>执行<code>Shutdown</code>且没有开启AOF持久化。</p>
 <h3 id="RDB持久化的缺点"><a href="#RDB持久化的缺点" class="headerlink" title="RDB持久化的缺点"></a>RDB持久化的缺点</h3><p>内存数据全量同步，大量IO影响性能。</p>
 <p>可能会因为Redis挂掉丢失数据。</p>
 <h3 id="AOF持久化"><a href="#AOF持久化" class="headerlink" title="AOF持久化"></a>AOF持久化</h3><p>保存写状态。</p>
@@ -439,11 +441,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
+                <a href="javascript:void(0)" class="js-tag color3">博弈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博弈</a>
+                <a href="javascript:void(0)" class="js-tag color2">VSCode</a>
               </li>
              
               <li class="article-tag-list-item">
