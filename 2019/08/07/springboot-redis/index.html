@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Mybatis | 咸鱼笔记本</title>
+  <title>SpringBoot集成Redis | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="咸鱼笔记本">
-<meta property="og:url" content="http://yoursite.com/tags/Mybatis/index.html">
+  <meta name="description" content="SpringBoot集成单机版Redis，优化查询速度。">
+<meta name="keywords" content="Spring Boot,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot集成Redis">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/springboot-redis/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
+<meta property="og:description" content="SpringBoot集成单机版Redis，优化查询速度。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-07T13:42:23.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="咸鱼笔记本">
+<meta name="twitter:title" content="SpringBoot集成Redis">
+<meta name="twitter:description" content="SpringBoot集成单机版Redis，优化查询速度。">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -132,36 +137,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-springboot-redis" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/06/mybatis/" class="archive-article-date">
-  	<time datetime="2019-08-06T06:02:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/06/mybatis/">Spring Boot整合Mybatis（注解方式）</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot集成Redis
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/07/springboot-redis/" class="archive-article-date">
+  	<time datetime="2019-08-07T12:29:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SpringBoot集成单机版Redis，优化查询速度。</p>
+<a id="more"></a>
+<h3 id="一、项目中添加Redis依赖"><a href="#一、项目中添加Redis依赖" class="headerlink" title="一、项目中添加Redis依赖"></a>一、项目中添加<code>Redis</code>依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、设置Redis属性"><a href="#二、设置Redis属性" class="headerlink" title="二、设置Redis属性"></a>二、设置Redis属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring.redis.database=0</span><br><span class="line">spring.redis.host=192.168.1.106</span><br><span class="line">spring.redis.port=6379</span><br><span class="line">spring.redis.jedis.pool.max-active=8</span><br><span class="line">spring.redis.jedis.pool.max-wait=-1</span><br><span class="line">spring.redis.jedis.pool.max-idle=8</span><br><span class="line">spring.redis.jedis.pool.min-idle=0</span><br><span class="line">#设置连接超时时间(毫秒)，不能太小</span><br><span class="line">spring.redis.timeout=1000</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、服务实现类中添加注解-Cacheable"><a href="#三、服务实现类中添加注解-Cacheable" class="headerlink" title="三、服务实现类中添加注解@Cacheable"></a>三、服务实现类中添加注解<code>@Cacheable</code></h3><p>使用<code>@Cacheable</code>标记的方法在执行后<code>Spring Cache</code>将缓存其返回结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//缓存注解</span><br><span class="line">@Cacheable(value = &quot;myname&quot;)</span><br><span class="line">@Override</span><br><span class="line">public User findUser(String name) &#123;</span><br><span class="line">    System.out.println(&quot;从数据库查询&quot;);</span><br><span class="line">    return userMapper.findUserByName(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、启动类中添加注解-EnableCaching"><a href="#四、启动类中添加注解-EnableCaching" class="headerlink" title="四、启动类中添加注解@EnableCaching"></a>四、启动类中添加注解<code>@EnableCaching</code></h3><p><code>@EnableCaching</code>注解是<code>spring framework</code>中的注解驱动的缓存管理功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@EnableCaching</span><br><span class="line">public class DemoApplication &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、结论"><a href="#五、结论" class="headerlink" title="五、结论"></a>五、结论</h3><p>后续的查询将使用Redis，优化查询效率。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -171,25 +187,112 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/07/springboot-redis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/06/mybatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot整合Mybatis（注解方式）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -212,9 +315,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
