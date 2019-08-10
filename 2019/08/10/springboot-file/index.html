@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: IoC | 咸鱼笔记本</title>
+  <title>SpringBoot整合文件的上传 | 咸鱼笔记本</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="咸鱼笔记本">
-<meta property="og:url" content="http://yoursite.com/tags/IoC/index.html">
+  <meta name="description" content="基于SpringBoot实现文件的上传功能。">
+<meta name="keywords" content="Spring boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot整合文件的上传">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/springboot-file/index.html">
 <meta property="og:site_name" content="咸鱼笔记本">
+<meta property="og:description" content="基于SpringBoot实现文件的上传功能。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/web-file.jpg">
+<meta property="og:updated_time" content="2019-08-10T01:30:46.493Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="咸鱼笔记本">
+<meta name="twitter:title" content="SpringBoot整合文件的上传">
+<meta name="twitter:description" content="基于SpringBoot实现文件的上传功能。">
+<meta name="twitter:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/web-file.jpg">
   
     <link rel="alternative" href="/atom.xml" title="咸鱼笔记本" type="application/atom+xml">
   
@@ -132,64 +139,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-springboot-file" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/30/springboot-annotation/" class="archive-article-date">
-  	<time datetime="2019-07-30T02:49:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/30/springboot-annotation/">全注解下的Spring IoC</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot整合文件的上传
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/10/springboot-file/" class="archive-article-date">
+  	<time datetime="2019-08-10T01:01:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>基于<code>SpringBoot</code>实现文件的上传功能。</p>
+<a id="more"></a>
+
+<h3 id="一、项目中添加依赖"><a href="#一、项目中添加依赖" class="headerlink" title="一、项目中添加依赖"></a>一、项目中添加依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、设置上传文件的大小"><a href="#二、设置上传文件的大小" class="headerlink" title="二、设置上传文件的大小"></a>二、设置上传文件的大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.servlet.multipart.max-file-size=500MB</span><br><span class="line">spring.servlet.multipart.max-request-size=500MB</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、制作文件上传的页面"><a href="#三、制作文件上传的页面" class="headerlink" title="三、制作文件上传的页面"></a>三、制作文件上传的页面</h3><p>在resources-&gt;templates文件夹下(thymeleaf的默认访问路径)创建upload.xml。内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;文件上传&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h2&gt;文件上传&lt;/h2&gt;</span><br><span class="line">&lt;hr/&gt;</span><br><span class="line">&lt;!--文件传输格式为POST--&gt;</span><br><span class="line">&lt;form method=<span class="string">"POST"</span> enctype=<span class="string">"multipart/form-data"</span> action=<span class="string">"/upload"</span>&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        文件&lt;input <span class="built_in">type</span>=<span class="string">"file"</span> name=<span class="string">"file"</span>/&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"上传"</span>/&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、创建文件上传的控制器"><a href="#四、创建文件上传的控制器" class="headerlink" title="四、创建文件上传的控制器"></a>四、创建文件上传的控制器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class UploadController &#123;</span><br><span class="line">    @RequestMapping(&quot;/toUpload&quot;)</span><br><span class="line">    public String toUpload()&#123;</span><br><span class="line">        return &quot;upload&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(value = &quot;/upload&quot;, method = RequestMethod.POST)</span><br><span class="line">    @ResponseBody</span><br><span class="line">    public String uploadFile(MultipartFile file, HttpServletRequest request) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line"></span><br><span class="line">            //创建文件在服务器端的存放路径</span><br><span class="line">            String dir = request.getServletContext().getRealPath(&quot;/upload&quot;);</span><br><span class="line">            File fileDir=new File(dir);</span><br><span class="line">            //存放路径不存在则创建</span><br><span class="line">            if(!fileDir.exists())&#123;</span><br><span class="line">                fileDir.mkdirs();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //生成文件在服务器端的存放名称</span><br><span class="line">            //获取后缀</span><br><span class="line">            String fileSuffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(&quot;.&quot;));</span><br><span class="line">            //文件名由UUID生成</span><br><span class="line">            String fileName= UUID.randomUUID().toString()+fileSuffix;</span><br><span class="line">            //路径+文件名</span><br><span class="line">            File files=new File(fileDir+&quot;/&quot;+fileName);</span><br><span class="line"></span><br><span class="line">            //上传</span><br><span class="line">            file.transferTo(files);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line"></span><br><span class="line">            return &quot;上传失败&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;上传成功&quot;;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、测试结果"><a href="#五、测试结果" class="headerlink" title="五、测试结果"></a>五、测试结果</h3><p><img src="https://github.com/skyrimgo/hexo-asset-image/raw/master/web-file.jpg" alt></p>
+<p>上传文件保存在webapp-&gt;upload中。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IoC</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring boot</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/10/springboot-file/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/07/springboot-redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot集成Redis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -212,9 +314,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
