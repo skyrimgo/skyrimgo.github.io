@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/7 | 朝思录</title>
+  <title>华为2020年应届初试编程 | 朝思录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="朝思录">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/page/2/index.html">
+  <meta name="description" content="问题1（难度：* ）三角形周长为p的直角三角形共有几个（边长为整数）？ 思路： 周长为3、4、5或者周长为4、3、5为同一三角形，枚举时设置三角形边长依次从小到大。 等边直角三角形不可能存在，因为不存在直角三角形的三边长都为整数。 第一条边长度i&amp;lt;=p/3,第二条边长度j&amp;lt;=(p-i)/2，第三边长度p-i-j。  实现代码1234567891011121314151617181920">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为2020年应届初试编程">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/huawei20/index.html">
 <meta property="og:site_name" content="朝思录">
+<meta property="og:description" content="问题1（难度：* ）三角形周长为p的直角三角形共有几个（边长为整数）？ 思路： 周长为3、4、5或者周长为4、3、5为同一三角形，枚举时设置三角形边长依次从小到大。 等边直角三角形不可能存在，因为不存在直角三角形的三边长都为整数。 第一条边长度i&amp;lt;=p/3,第二条边长度j&amp;lt;=(p-i)/2，第三边长度p-i-j。  实现代码1234567891011121314151617181920">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-29T02:41:29.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="朝思录">
+<meta name="twitter:title" content="华为2020年应届初试编程">
+<meta name="twitter:description" content="问题1（难度：* ）三角形周长为p的直角三角形共有几个（边长为整数）？ 思路： 周长为3、4、5或者周长为4、3、5为同一三角形，枚举时设置三角形边长依次从小到大。 等边直角三角形不可能存在，因为不存在直角三角形的三边长都为整数。 第一条边长度i&amp;lt;=p/3,第二条边长度j&amp;lt;=(p-i)/2，第三边长度p-i-j。  实现代码1234567891011121314151617181920">
   
     <link rel="alternative" href="/atom.xml" title="朝思录" type="application/atom+xml">
   
@@ -132,36 +137,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-huawei20" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      华为2020年应届初试编程
+    </h1>
+  
+
+        
+        <a href="/2019/08/29/huawei20/" class="archive-article-date">
+  	<time datetime="2019-08-29T01:51:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题1（难度：-）"><a href="#问题1（难度：-）" class="headerlink" title="问题1（难度：* ）"></a>问题1（难度：* ）</h3><p>三角形周长为p的直角三角形共有几个（边长为整数）？</p>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><ul>
+<li>周长为3、4、5或者周长为4、3、5为同一三角形，枚举时设置三角形边长依次从小到大。</li>
+<li>等边直角三角形不可能存在，因为不存在直角三角形的三边长都为整数。</li>
+<li>第一条边长度i&lt;=p/3,第二条边长度j&lt;=(p-i)/2，第三边长度p-i-j。</li>
+</ul>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line">public class Q1 &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        BufferedReader <span class="keyword">in</span> = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">while</span> (in.ready()) &#123;</span><br><span class="line">            int p = Integer.parseInt(in.readLine());</span><br><span class="line">            int res = 0;  //记录直角三角形个数</span><br><span class="line">            <span class="keyword">for</span> (int i = 1; i &lt;= p/3; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (int j = i; j &lt;= (p - i)/2; j++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i * i + j * j == (p - i - j) * (p - i - j)) &#123;</span><br><span class="line">                        res++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(res);</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2（难度：-）"><a href="#问题2（难度：-）" class="headerlink" title="问题2（难度：*** ）"></a>问题2（难度：*** ）</h3><p>5*5的矩阵给6个数是否相邻（输入包含多个算例）。</p>
+<h4 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h4><ul>
+<li>广度优先搜索(BFS)，记录与任一数相邻的总数是否为6</li>
+</ul>
+<h4 id="实现代码-1"><a href="#实现代码-1" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    static int res;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        res=0;</span><br><span class="line">        int[][] mem = &#123;&#123;1, 2, 3, 4, 5&#125;, &#123;11, 12, 13, 14, 15&#125;, &#123;21, 22, 23, 24, 25&#125;, &#123;31, 32, 33, 34, 35&#125;, &#123;41, 42, 43, 44, 45&#125;&#125;;</span><br><span class="line">        //5*5的数据t_mem记录对应位置是否存在，存在为1，不存在为0</span><br><span class="line">        int[][] t_mem = new int[5][5];</span><br><span class="line"></span><br><span class="line">        BufferedReader <span class="keyword">in</span> = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">while</span> (in.ready()) &#123;</span><br><span class="line">            String[] strings = in.readLine().split(<span class="string">" "</span>);</span><br><span class="line">            int[] nums = new int[6];</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; 6; i++) &#123;</span><br><span class="line">                nums[i] = Integer.parseInt(strings[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            //初始化t_mem</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; 6; i++) &#123;</span><br><span class="line">                t_mem[nums[i] / 10][nums[i] % 10 - 1] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            int i_fir = 0;</span><br><span class="line">            int j_fir = 0;</span><br><span class="line">            //初始化第一次出现数字的位置</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (int j = 0; j &lt; 5; j++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (t_mem[i][j] == 1) &#123;</span><br><span class="line">                        i_fir = i;</span><br><span class="line">                        j_fir = j;</span><br><span class="line">                        <span class="built_in">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            //BFS遍历，记录与第一个数字相邻的数字</span><br><span class="line">            bfs(i_fir, j_fir, t_mem);</span><br><span class="line">            //是否共有6个数相邻</span><br><span class="line">            <span class="keyword">if</span>(res==6)</span><br><span class="line">                System.out.println(1);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                System.out.println(0);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">    *遍历上下左右四个方向</span><br><span class="line">    */</span><br><span class="line">    public static void bfs(int i_fir, int j_fir, int[][] t_mem) &#123;</span><br><span class="line">        <span class="keyword">if</span> (t_mem[i_fir][j_fir] == 1) &#123;</span><br><span class="line">            res++;</span><br><span class="line">            //已经搜索过，该位置内容置0</span><br><span class="line">            t_mem[i_fir][j_fir] = 0;</span><br><span class="line">            <span class="keyword">if</span> (i_fir &lt;= 3)</span><br><span class="line">                bfs(i_fir + 1, j_fir, t_mem);</span><br><span class="line">            <span class="keyword">if</span> (i_fir &gt; 0)</span><br><span class="line">                bfs(i_fir - 1, j_fir, t_mem);</span><br><span class="line">            <span class="keyword">if</span> (j_fir &lt;= 3)</span><br><span class="line">                bfs(i_fir, j_fir + 1, t_mem);</span><br><span class="line">            <span class="keyword">if</span> (j_fir &gt; 0)</span><br><span class="line">                bfs(i_fir, j_fir - 1, t_mem);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题3（难度：-）"><a href="#问题3（难度：-）" class="headerlink" title="问题3（难度：** ）"></a>问题3（难度：** ）</h3><p>两个等长字符串最少去除几个字母相同？</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li>dp数组，可以将问题转化为求解字符串最长字串的问题。</li>
+<li>dp数组第一行字符串在某索引处出现与另一字符串第一个字母相同的情况，第一行在该索引之后全部置1，第一列同理。</li>
+<li>字符串1第第j个字母与字符串2第i个字母相同？<br>dp[i][j]=dp[i-1][j-1]+1；<br>否则，<br>dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1])</li>
+<li>最长字串的长度记录在dp[count-1][count-1]</li>
+<li>返回count-dp[count-1][count-1] ，即需要删减的字母个数</li>
+</ul>
+<h4 id="实现代码-2"><a href="#实现代码-2" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        BufferedReader <span class="keyword">in</span> = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        StringBuilder result = new StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (in.ready()) &#123;</span><br><span class="line">            int count = Integer.parseInt(in.readLine());</span><br><span class="line">            String[] strings1 = in.readLine().split(<span class="string">" "</span>);</span><br><span class="line">            String[] strings2 = in.readLine().split(<span class="string">" "</span>);</span><br><span class="line">            int[] nums1 = new int[count];</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">                nums1[i] = Integer.parseInt(strings1[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            int[] nums2 = new int[count];</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">                nums2[i] = Integer.parseInt(strings2[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            int[][] res=new int[count][count];</span><br><span class="line">            <span class="keyword">for</span> (int i=0;i&lt;count;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums1[0]==nums2[i])&#123;</span><br><span class="line">                    <span class="keyword">while</span> (i&lt;count)&#123;</span><br><span class="line">                        res[i][0]=1;</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (int i=0;i&lt;count;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums2[0]==nums1[i])&#123;</span><br><span class="line">                    <span class="keyword">while</span> (i&lt;count)&#123;</span><br><span class="line">                        res[0][i]=1;</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (int i=1;i&lt;count;i++)&#123;</span><br><span class="line">                <span class="keyword">for</span> (int j=1;j&lt;count;j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(nums1[j]==nums2[i])&#123;</span><br><span class="line">                        res[i][j]=res[i-1][j-1]+1;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        res[i][j]=Math.max(res[i-1][j],res[i][j-1]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(count-res[count-1][count-1]);</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/06/LRUcache/" class="archive-article-date">
-  	<time datetime="2019-07-06T09:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/06/LRUcache/">LRU缓存机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -173,212 +200,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/29/huawei20/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/05/pregame/" class="archive-article-date">
-  	<time datetime="2019-07-05T01:59:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/10/springboot-file/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot整合文件的上传</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/05/pregame/">博弈基本理论</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博弈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/03/Sort/" class="archive-article-date">
-  	<time datetime="2019-07-03T11:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/03/Sort/">面试中常见的七种排序算法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/02/Stackelberg/" class="archive-article-date">
-  	<time datetime="2019-07-02T11:54:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/02/Stackelberg/">基于Stackelberg博弈的综合能源系统交互策略</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博弈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/01/GA/" class="archive-article-date">
-  	<time datetime="2019-07-01T06:15:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/01/GA/">遗传算法（GA）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/01/PSO/" class="archive-article-date">
-  	<time datetime="2019-07-01T00:30:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/01/PSO/">粒子群算法（PSO）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/07/">&laquo; Prev</a><a class="page-number" href="/archives/2019/07/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -402,8 +322,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
