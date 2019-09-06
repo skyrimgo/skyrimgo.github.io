@@ -6,23 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="skyrimgo.club">
-  <title>Spring Boot整合JPA | 朝思录</title>
+  <title>Archives: 2019/9 | 朝思录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在Spring Boot中，JPA通过依靠Hibernate才得以实现,JPA维护的对象是实体，通过持久化上下文来使用。">
-<meta name="keywords" content="Spring Boot,JPA">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot整合JPA">
-<meta property="og:url" content="skyrimgo.club/2019/08/03/jpa/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="朝思录">
+<meta property="og:url" content="skyrimgo.club/archives/2019/09/index.html">
 <meta property="og:site_name" content="朝思录">
-<meta property="og:description" content="在Spring Boot中，JPA通过依靠Hibernate才得以实现,JPA维护的对象是实体，通过持久化上下文来使用。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/15.png">
-<meta property="og:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/16.png">
-<meta property="og:updated_time" content="2019-08-06T06:46:31.252Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot整合JPA">
-<meta name="twitter:description" content="在Spring Boot中，JPA通过依靠Hibernate才得以实现,JPA维护的对象是实体，通过持久化上下文来使用。">
-<meta name="twitter:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/15.png">
+<meta name="twitter:title" content="朝思录">
   
     <link rel="alternative" href="/atom.xml" title="朝思录" type="application/atom+xml">
   
@@ -140,188 +132,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-jpa" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Spring Boot整合JPA
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/06/ahp/" class="archive-article-date">
+  	<time datetime="2019-09-06T13:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/06/ahp/">AHP层次分析法权重计算</a>
     </h1>
   
 
-        
-        <a href="/2019/08/03/jpa/" class="archive-article-date">
-  	<time datetime="2019-08-03T12:32:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在<code>Spring Boot</code>中，<code>JPA</code>通过依靠<code>Hibernate</code>才得以实现,<code>JPA</code>维护的对象是实体，通过持久化上下文来使用。</p>
-<a id="more"></a>
-
-<h3 id="一、配置jpa相关依赖"><a href="#一、配置jpa相关依赖" class="headerlink" title="一、配置jpa相关依赖"></a>一、配置jpa相关依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">	&lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">	&lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、全局配置文件"><a href="#二、全局配置文件" class="headerlink" title="二、全局配置文件"></a>二、全局配置文件</h3><h4 id="1、数据库方面"><a href="#1、数据库方面" class="headerlink" title="1、数据库方面"></a>1、数据库方面</h4><p>需要配置数据库驱动，用户名，密码，连接地址等信息。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=root</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/jpa?serverTimezone=GMT%2B8</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、JPA方面"><a href="#2、JPA方面" class="headerlink" title="2、JPA方面"></a>2、JPA方面</h4><p>配置JPA相关属性。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.jackson.serialization.indent-output=<span class="literal">true</span></span><br><span class="line">spring.jpa.hibernate.ddl-auto=update</span><br><span class="line">spring.jpa.show-sql=<span class="literal">true</span></span><br><span class="line">spring.jpa.database-platform=org.hibernate.dialect.MySQL5Dialect</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、创建对象"><a href="#三、创建对象" class="headerlink" title="三、创建对象"></a>三、创建对象</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//lombok注解，包括<span class="built_in">set</span>，get，toString等方法</span><br><span class="line">@Data</span><br><span class="line">//标明是一个实体类</span><br><span class="line">@Entity</span><br><span class="line">//设置映射的表名称</span><br><span class="line">@Table(name = <span class="string">"t_user"</span>)</span><br><span class="line">public class User &#123;</span><br><span class="line">    //主键</span><br><span class="line">    @Id</span><br><span class="line">    //主键增长策略</span><br><span class="line">    @GeneratedValue(strategy = GenerationType.IDENTITY)</span><br><span class="line">    private Integer id;</span><br><span class="line">    //表格中的字段</span><br><span class="line">    @Column(name = <span class="string">"username"</span>)</span><br><span class="line">    private String name;</span><br><span class="line">    private String password;</span><br><span class="line">    private String email;</span><br><span class="line">    private Date birthday;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="四、JPA接口定义"><a href="#四、JPA接口定义" class="headerlink" title="四、JPA接口定义"></a>四、JPA接口定义</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public interface UserDao extends JpaRepository&lt;User, Integer&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里不需要提供任何实现类，<code>Spring Boot</code>会根据<code>JPA</code>接口规范帮助我们完成。其中User是类名，Integer是主键类型。</p>
-<h3 id="五、Service类定义"><a href="#五、Service类定义" class="headerlink" title="五、Service类定义"></a>五、Service类定义</h3><p>1、定义接口服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserService &#123;</span><br><span class="line">    void addUser(User user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、实现接口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class UserServiceImpl implements UserService &#123;</span><br><span class="line">    //属性自动装配</span><br><span class="line">    @Autowired</span><br><span class="line">    private UserDao userDao;</span><br><span class="line">    //调用JPA接口定义的save方法</span><br><span class="line">    @Override</span><br><span class="line">    public void addUser(User user) &#123;</span><br><span class="line">        userDao.save(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="六、控制器测试"><a href="#六、控制器测试" class="headerlink" title="六、控制器测试"></a>六、控制器测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//标明这是一个控制器</span><br><span class="line">@Controller</span><br><span class="line">public class UserController &#123;</span><br><span class="line">    //依赖注入，自动装配Service类</span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService userService;</span><br><span class="line">    //映射路径，访问时执行</span><br><span class="line">    @RequestMapping(<span class="string">"/save"</span>)</span><br><span class="line">    //响应内容</span><br><span class="line">    @ResponseBody</span><br><span class="line">    public String <span class="function"><span class="title">saveUser</span></span>() &#123;</span><br><span class="line">        User user = new User();</span><br><span class="line">        user.setName(<span class="string">"name1"</span>);</span><br><span class="line">        user.setPassword(<span class="string">"123"</span>);</span><br><span class="line">        user.setEmail(<span class="string">"ashassnow@126.com"</span>);</span><br><span class="line">        user.setBirthday(new Date());</span><br><span class="line">        userService.addUser(user);</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="七、Spring-Boot启动文件"><a href="#七、Spring-Boot启动文件" class="headerlink" title="七、Spring Boot启动文件"></a>七、Spring Boot启动文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//扫描基础包</span><br><span class="line">@SpringBootApplication(scanBasePackages = <span class="string">"com.example"</span>)</span><br><span class="line">// 扫描实体类</span><br><span class="line">@EntityScan(<span class="string">"com.example.pojo"</span>)</span><br><span class="line">// 扫描dao</span><br><span class="line">@EnableJpaRepositories(<span class="string">"com.example.dao"</span>)</span><br><span class="line">public class DemoApplication &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="八、测试结果"><a href="#八、测试结果" class="headerlink" title="八、测试结果"></a>八、测试结果</h3><p>浏览器地址栏中访问<code>http://localhost:8080/save</code></p>
-<p><img src="https://github.com/skyrimgo/hexo-asset-image/raw/master/15.png" alt></p>
-<p>数据库中表t_user被创建。</p>
-<p><img src="https://github.com/skyrimgo/hexo-asset-image/raw/master/16.png" alt></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JPA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:skyrimgo.club/2019/08/03/jpa/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/08/06/mybatis/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Spring Boot整合Mybatis（注解方式）
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/30/springboot-annotation/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">全注解下的Spring IoC</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -344,8 +208,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
