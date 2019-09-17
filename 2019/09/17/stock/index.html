@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="skyrimgo.club">
-  <title>数据库知识（上） | 朝思录</title>
+  <title>状态机求解最佳买卖股票时机 | 朝思录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于数据库设计过程中一些知识点。">
-<meta name="keywords" content="数据库">
+  <meta name="description" content="很多读者抱怨股票系列问题奇技淫巧太多，如果面试真的遇到这类问题，基本不会想到那些巧妙的办法，怎么办？所以本文拒绝奇技淫巧，而是稳扎稳打，只用一种状态机方法解决所用问题，以不变应万变。">
+<meta name="keywords" content="算法,动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库知识（上）">
-<meta property="og:url" content="skyrimgo.club/2019/07/12/sql/index.html">
+<meta property="og:title" content="状态机求解最佳买卖股票时机">
+<meta property="og:url" content="skyrimgo.club/2019/09/17/stock/index.html">
 <meta property="og:site_name" content="朝思录">
-<meta property="og:description" content="关于数据库设计过程中一些知识点。">
+<meta property="og:description" content="很多读者抱怨股票系列问题奇技淫巧太多，如果面试真的遇到这类问题，基本不会想到那些巧妙的办法，怎么办？所以本文拒绝奇技淫巧，而是稳扎稳打，只用一种状态机方法解决所用问题，以不变应万变。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-24T11:19:09.734Z">
+<meta property="og:updated_time" content="2019-09-17T11:44:59.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库知识（上）">
-<meta name="twitter:description" content="关于数据库设计过程中一些知识点。">
+<meta name="twitter:title" content="状态机求解最佳买卖股票时机">
+<meta name="twitter:description" content="很多读者抱怨股票系列问题奇技淫巧太多，如果面试真的遇到这类问题，基本不会想到那些巧妙的办法，怎么办？所以本文拒绝奇技淫巧，而是稳扎稳打，只用一种状态机方法解决所用问题，以不变应万变。">
   
     <link rel="alternative" href="/atom.xml" title="朝思录" type="application/atom+xml">
   
@@ -137,54 +137,78 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sql" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-stock" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数据库知识（上）
+      状态机求解最佳买卖股票时机
     </h1>
   
 
         
-        <a href="/2019/07/12/sql/" class="archive-article-date">
-  	<time datetime="2019-07-12T07:55:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+        <a href="/2019/09/17/stock/" class="archive-article-date">
+  	<time datetime="2019-09-17T07:13:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于数据库设计过程中一些知识点。</p>
+        <p>很多读者抱怨股票系列问题奇技淫巧太多，如果面试真的遇到这类问题，基本不会想到那些巧妙的办法，怎么办？所以本文拒绝奇技淫巧，而是稳扎稳打，只用一种<code>状态机</code>方法解决所用问题，以不变应万变。</p>
 <a id="more"></a>
-<h3 id="关系型数据库设计"><a href="#关系型数据库设计" class="headerlink" title="关系型数据库设计"></a>关系型数据库设计</h3><p>1、存储管理：将数据的逻辑关系转换为物理存储关系。</p>
-<p>2、缓存机制：优化执行效率。</p>
-<p>3、SQL解析。</p>
-<p>4、日志管理：记录操作，用于恢复数据。</p>
-<p>5、权限划分：多用户管理模块。</p>
-<p>6、容灾机制：用于灾难恢复。</p>
-<p>7、优化数据库查询效率：索引管理。</p>
-<p>8、并发操作：锁管理。</p>
-<h3 id="索引模块"><a href="#索引模块" class="headerlink" title="索引模块"></a>索引模块</h3><p>目的：提高查询效率，避免全表扫描。</p>
-<p>主键，唯一键，普通键可作为索引。</p>
-<h3 id="索引模块的数据结构"><a href="#索引模块的数据结构" class="headerlink" title="索引模块的数据结构"></a>索引模块的数据结构</h3><p>二叉查找树：平衡二叉树，红黑树。</p>
-<p>B-tree</p>
-<p>B+-tree（主流）：1、子树指针个数等于关键字。2、数据保存在叶子节点中。3、叶子节点的链指针指向下一个叶子节点。</p>
-<p>哈希结构：效率较高，不能排序，不能范围查询，不能使用部分索引查询，不能避免表扫描。</p>
-<p>BitMap（Oracle支持）</p>
-<h3 id="密集索引与稀疏索引"><a href="#密集索引与稀疏索引" class="headerlink" title="密集索引与稀疏索引"></a>密集索引与稀疏索引</h3><p>密集索引的每个搜索码都对应一个索引值。</p>
-<p>稀疏索引只为索引码的某些值建立索引项。</p>
-<p>InnoDB（密集）：非主键索引存储相关键位和对应的主键值，包含两次查找。</p>
-<p>MyISAM（稀疏）。</p>
-<h3 id="定位并优化慢查询"><a href="#定位并优化慢查询" class="headerlink" title="定位并优化慢查询"></a>定位并优化慢查询</h3><p>打开慢查询日志并设置慢查询时限。</p>
-<p>使用Explain语句分析：<br>1、Type属性为index或all，需要优化。2、extra为文件排序或临时表，需要优化。</p>
-<p>修改sql或尽量让sql走查询。</p>
-<h3 id="最左匹配原则"><a href="#最左匹配原则" class="headerlink" title="最左匹配原则"></a>最左匹配原则</h3><p>mysql会一直向右直到遇到范围查询就停止匹配。</p>
-<h3 id="索引越多越好吗？"><a href="#索引越多越好吗？" class="headerlink" title="索引越多越好吗？"></a>索引越多越好吗？</h3><p>数据量小的表不需要索引。</p>
-<p>需要维护成本。</p>
-<p>创建索引需要空间。</p>
+<h3 id="题解分析："><a href="#题解分析：" class="headerlink" title="题解分析："></a>题解分析：</h3><p>每天有三种状态：买入，卖出，保留。</p>
+<p>dp[i][k][0]表示在第i天还剩k次交易机会，此时手中无股票。</p>
+<p>dp[i][k][1]表示在第i天还剩k次交易机会，此时手中有股票。</p>
+<h4 id="状态转移方程："><a href="#状态转移方程：" class="headerlink" title="状态转移方程："></a>状态转移方程：</h4><ul>
+<li>初始状态：</li>
+</ul>
+<p>base case：</p>
+<p>dp[-1][k][0] = dp[i][0][0] = 0</p>
+<p>dp[-1][k][1] = dp[i][0][1] = -infinity</p>
+<ul>
+<li>状态转移方程：</li>
+</ul>
+<p>dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])</p>
+<p>dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])</p>
+<h3 id="买卖股票的最佳时机"><a href="#买卖股票的最佳时机" class="headerlink" title="买卖股票的最佳时机"></a>买卖股票的最佳时机</h3><h4 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h4><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/</a></p>
+<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意你不能在买入股票前卖出股票。</p>
+<h4 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    int[][] profit = new int[prices.length][2];</span><br><span class="line">    profit[0][0] = 0;</span><br><span class="line">    profit[0][1] = -prices[0];</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; prices.length; i++) &#123;</span><br><span class="line">        profit[i][0] = Math.max(profit[i - 1][0], profit[i - 1][1] + prices[i]);</span><br><span class="line">        profit[i][1] = Math.max(profit[i-1][1],profit[i-1][0]-prices[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> profit[prices.length-1][0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="买卖股票的最佳时机II"><a href="#买卖股票的最佳时机II" class="headerlink" title="买卖股票的最佳时机II"></a>买卖股票的最佳时机II</h3><h4 id="题目地址-1"><a href="#题目地址-1" class="headerlink" title="题目地址"></a>题目地址</h4><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/</a></p>
+<h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<h4 id="主要代码-1"><a href="#主要代码-1" class="headerlink" title="主要代码"></a>主要代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    int len = prices.length;</span><br><span class="line">    <span class="keyword">if</span>(len==0)</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    int[][] profit = new int[len][2];</span><br><span class="line">    profit[0][1] = -prices[0];</span><br><span class="line">    profit[0][0] = 0;</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">        profit[i][0] = Math.max(profit[i - 1][0], profit[i - 1][1] + prices[i]);</span><br><span class="line">        profit[i][1] = Math.max(profit[i - 1][1], profit[i - 1][0] - prices[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> profit[len - 1][0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="买卖股票的最佳时机III"><a href="#买卖股票的最佳时机III" class="headerlink" title="买卖股票的最佳时机III"></a>买卖股票的最佳时机III</h3><h4 id="题目地址-2"><a href="#题目地址-2" class="headerlink" title="题目地址"></a>题目地址</h4><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/</a></p>
+<h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你最多可以完成 两笔 交易。</p>
+<p>注意: 你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<h4 id="主要代码-2"><a href="#主要代码-2" class="headerlink" title="主要代码"></a>主要代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    int len = prices.length;</span><br><span class="line">    <span class="keyword">if</span> (len == 0)</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    int[][][] profit = new int[len][3][2];</span><br><span class="line">    profit[0][0][0] = 0;</span><br><span class="line">    profit[0][1][0] = 0;</span><br><span class="line">    profit[0][2][0] = 0;</span><br><span class="line">    profit[0][0][1] = -prices[0];</span><br><span class="line">    profit[0][1][1] = -prices[0];</span><br><span class="line">    profit[0][2][1] = -prices[0];</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (int k = 2; k &gt;= 1; k--) &#123;</span><br><span class="line">            profit[i][k][0] = Math.max(profit[i - 1][k][0], profit[i - 1][k][1] + prices[i]);</span><br><span class="line">            profit[i][k][1] = Math.max(profit[i - 1][k][1], profit[i - 1][k - 1][0] - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> Math.max(Math.max(profit[len - 1][0][0], profit[len - 1][1][0]), profit[len - 1][2][0]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="买卖股票的最佳时机IV"><a href="#买卖股票的最佳时机IV" class="headerlink" title="买卖股票的最佳时机IV"></a>买卖股票的最佳时机IV</h3><h4 id="题目地址-3"><a href="#题目地址-3" class="headerlink" title="题目地址"></a>题目地址</h4><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/</a></p>
+<h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你最多可以完成 k 笔交易。</p>
+<p>注意: 你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<h4 id="主要代码-3"><a href="#主要代码-3" class="headerlink" title="主要代码"></a>主要代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">int len = prices.length;</span><br><span class="line"><span class="keyword">if</span> (len == 0)</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">int[][][] profit = new int[len][k + 1][2];</span><br><span class="line"><span class="keyword">for</span> (int t = 0; t &lt;= k; t++) &#123;</span><br><span class="line">    profit[0][t][0] = 0;</span><br><span class="line">    profit[0][t][1] = -prices[0];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (int t = k; t &gt;= 1; t--) &#123;</span><br><span class="line">        profit[i][t][0] = Math.max(profit[i - 1][t][0], profit[i - 1][t][1] + prices[i]);</span><br><span class="line">        profit[i][t][1] = Math.max(profit[i - 1][t][1], profit[i - 1][t - 1][0] - prices[i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int res = 0;</span><br><span class="line"><span class="keyword">for</span> (int t = 0; t &lt;= k; t++) &#123;</span><br><span class="line">    res = Math.max(res, profit[len - 1][t][0]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> res;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最佳买卖股票时机含冷冻期"><a href="#最佳买卖股票时机含冷冻期" class="headerlink" title="最佳买卖股票时机含冷冻期"></a>最佳买卖股票时机含冷冻期</h3><h4 id="题目地址-4"><a href="#题目地址-4" class="headerlink" title="题目地址"></a>题目地址</h4><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/</a></p>
+<h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数数组，其中第 i 个元素代表了第 i 天的股票价格 。​</p>
+<p>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
+<pre><code>* 你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
+* 卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</code></pre><h4 id="主要代码-4"><a href="#主要代码-4" class="headerlink" title="主要代码"></a>主要代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    int len = prices.length;</span><br><span class="line">    <span class="keyword">if</span> (len == 0)</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    int[][] profit = new int[len][2];</span><br><span class="line">    profit[0][0] = 0;</span><br><span class="line">    profit[0][1] = -prices[0];</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">        profit[i][0] = Math.max(profit[i - 1][0], profit[i - 1][1] + prices[i]);</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= 2) &#123;</span><br><span class="line">            profit[i][1] = Math.max(profit[i - 1][1], profit[i - 2][0] - prices[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            profit[i][1] = Math.max(-prices[1], -prices[0]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> profit[len - 1][0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="买卖股票的最佳时机含手续费"><a href="#买卖股票的最佳时机含手续费" class="headerlink" title="买卖股票的最佳时机含手续费"></a>买卖股票的最佳时机含手续费</h3><h4 id="题目地址-5"><a href="#题目地址-5" class="headerlink" title="题目地址"></a>题目地址</h4><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/</a></p>
+<h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个整数数组 prices，其中第 i 个元素代表了第 i 天的股票价格 ；非负整数 fee 代表了交易股票的手续费用。</p>
+<p>你可以无限次地完成交易，但是你每次交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。</p>
+<p>返回获得利润的最大值。</p>
+<h4 id="主要代码-5"><a href="#主要代码-5" class="headerlink" title="主要代码"></a>主要代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices, int fee) &#123;</span><br><span class="line">    int len = prices.length;</span><br><span class="line">    <span class="keyword">if</span> (len == 0)</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    int[][] profit = new int[len][2];</span><br><span class="line">    profit[0][0] = 0;</span><br><span class="line">    profit[0][1] = -prices[0];</span><br><span class="line">    <span class="keyword">for</span> (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">        profit[i][0] = Math.max(profit[i - 1][0], profit[i - 1][1] + prices[i]-fee);</span><br><span class="line">        profit[i][1] = Math.max(profit[i - 1][1], profit[i - 1][0] - prices[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> profit[len - 1][0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -198,7 +222,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
         		</li>
       		
 		</ul>
@@ -254,7 +282,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:skyrimgo.club/2019/07/12/sql/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:skyrimgo.club/2019/09/17/stock/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -268,18 +296,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/12/sql-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据库知识（下）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/10/Web-Interview-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络知识（下）</div>
+    <a href="/2019/09/06/ahp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AHP层次分析法权重计算</div>
       <i class="icon-circle-right"></i>
     </a>
   
