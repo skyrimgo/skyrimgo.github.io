@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2020年应届生Vivo初试笔试编程题三道（附思路及解法）。">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VIVO笔试编程题三题">
+<meta property="og:url" content="skyrimgo.club/2019/09/25/vivo/index.html">
+<meta property="og:site_name" content="朝思录">
+<meta property="og:description" content="2020年应届生Vivo初试笔试编程题三道（附思路及解法）。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-25T05:22:02.962Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VIVO笔试编程题三题">
+<meta name="twitter:description" content="2020年应届生Vivo初试笔试编程题三道（附思路及解法）。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="skyrimgo.club/2019/09/25/vivo/">
+
+
+
+
+
+  <title>VIVO笔试编程题三题 | 朝思录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/skyrimgo">
+	<img style="position:absolute;top:0;left:0;border:0;" width="120" height="120" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1">
+	</a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+	
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">朝思录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="skyrimgo.club/2019/09/25/vivo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Skyrimgo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝思录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">VIVO笔试编程题三题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T12:27:20+08:00">
+                2019-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>2020年应届生Vivo初试笔试编程题三道（附思路及解法）。</p>
+<a id="more"></a>
+
+
+<h3 id="问题1（难度：-）"><a href="#问题1（难度：-）" class="headerlink" title="问题1（难度：** ）"></a>问题1（难度：** ）</h3><ul>
+<li><p>给定一个非负整数数组，你最初位于数组的第一个位置。</p>
+</li>
+<li><p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+</li>
+<li><p>判断你到达最后一个位置所花费的最小步数。</p>
+</li>
+<li><p>一开始就在最后一个位置返回0。</p>
+</li>
+<li><p>不能到达最后一个位置返回-1。</p>
+</li>
+</ul>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><ul>
+<li><p>初始步数为0。</p>
+</li>
+<li><p>从前往后遍历，直到能找到一个位置i，在该位置能够跳转到末尾。步数+1。</p>
+</li>
+<li><p>从前往后遍历，直到能找到一个位置j，在该位置能够跳转i。步数+1。</p>
+</li>
+<li><p>重复上述步骤，直到从初始位置开始跳转。</p>
+</li>
+</ul>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line">public class Q1 &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">         BufferedReader <span class="keyword">in</span> = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">while</span> (in.ready()) &#123;</span><br><span class="line">            String[] strings = in.readLine().split(<span class="string">" "</span>);</span><br><span class="line">            int len = strings.length;</span><br><span class="line">            int[] nums = new int[len];</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">                nums[i] = Integer.parseInt(strings[i]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(start(nums, len - 1));</span><br><span class="line">            /* got nums */</span><br><span class="line">            // <span class="keyword">if</span> (in.ready()) result.append(<span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //从后往前遍历，得到能跳转当前索引的最前面的点</span><br><span class="line">    public static int start(int[] nums, int index) &#123;</span><br><span class="line">        <span class="keyword">if</span> (index == 0) &#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; index; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + i &gt;= index) &#123;</span><br><span class="line">                <span class="built_in">return</span> 1 + start(nums, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="改进算法"><a href="#改进算法" class="headerlink" title="改进算法"></a>改进算法</h4><p>上述代码时间复杂度为O(n*n)，每次遍历出现了大量的冗余工作，每个位置被重复遍历多次，下面做出修改，改进后的算法时间复杂度为O(n)。</p>
+<h4 id="改进思路"><a href="#改进思路" class="headerlink" title="改进思路"></a>改进思路</h4><ul>
+<li><p>用列表list维护不同步数能够跳转到能够到达末尾的索引。</p>
+</li>
+<li><p>首先将末尾索引加入到list中。list下标代表步数，内容代表当前索引。涵义：末尾索引位置的点经过0步到达末尾。</p>
+</li>
+<li><p>数组从后往前遍历（遍历一次）。列表从前往后遍历，当数组索引处能跳转到列表中存储的索引，在列表后面设置索引。</p>
+</li>
+<li><p>返回0所在的索引即为从初始位置跳转的最少步数。</p>
+</li>
+<li><p>异常情况分析：</p>
+<p>1、一开始就在末尾：不用遍历，直接返回索引0；</p>
+<p>2、不存在路径，list中不含0，list返回不存在元素的索引为-1。</p>
+</li>
+</ul>
+<h4 id="实现代码-1"><a href="#实现代码-1" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Q1 &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        BufferedReader <span class="keyword">in</span> = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">while</span> (in.ready()) &#123;</span><br><span class="line">            String[] strings = in.readLine().split(<span class="string">" "</span>);</span><br><span class="line">            int len = strings.length;</span><br><span class="line">            int[] nums = new int[len];</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">                nums[i] = Integer.parseInt(strings[i]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 从后往前遍历截断数组</span><br><span class="line">            List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">            list.add(len - 1);</span><br><span class="line">            <span class="keyword">for</span> (int index = len - 2; index &gt;= 0; index--) &#123;</span><br><span class="line">                <span class="keyword">for</span> (int i = 0; i &lt; list.size(); i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (index + nums[index] &gt;= list.get(i)) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (i &lt; list.size() - 1) &#123;</span><br><span class="line">                            list.set(i + 1, index);</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            list.add(index);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="built_in">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(list.indexOf(0));</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2（难度：-）"><a href="#问题2（难度：-）" class="headerlink" title="问题2（难度：** ）"></a>问题2（难度：** ）</h3><p>m个人，每次数n个数排除，排除的人按次序排列输出。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>典型的约瑟夫环问题。</p>
+<h4 id="实现代码-2"><a href="#实现代码-2" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Q2 &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        BufferedReader <span class="keyword">in</span> = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">while</span> (in.ready()) &#123;</span><br><span class="line">            String[] strings = in.readLine().split(<span class="string">" "</span>);</span><br><span class="line">            int count = strings.length;</span><br><span class="line">            int[] nums = new int[count];</span><br><span class="line">            <span class="keyword">for</span> (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">                nums[i] = Integer.parseInt(strings[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            int m = nums[0];</span><br><span class="line">            int n = nums[1];</span><br><span class="line">            yuesefu(m, n);</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void yuesefu(int totalNum, int countNum) &#123;</span><br><span class="line">        // 初始化人数</span><br><span class="line">        List&lt;Integer&gt; start = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (int i = 1; i &lt;= totalNum; i++) &#123;</span><br><span class="line">            start.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        // 从第K个开始计数</span><br><span class="line">        int k = 0;</span><br><span class="line">        <span class="keyword">while</span> (start.size() &gt; 0) &#123;</span><br><span class="line">            k = k + countNum;</span><br><span class="line">            // 第m人的索引位置</span><br><span class="line">            k = k % (start.size()) - 1;</span><br><span class="line">            // 判断是否到队尾</span><br><span class="line">            <span class="keyword">if</span> (k &lt; 0) &#123;</span><br><span class="line">                System.out.println(start.get(start.size() - 1));</span><br><span class="line">                start.remove(start.size() - 1);</span><br><span class="line">                k = 0;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(start.get(k));</span><br><span class="line">                start.remove(k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/17/stock/" rel="next" title="状态机求解最佳买卖股票时机">
+                <i class="fa fa-chevron-left"></i> 状态机求解最佳买卖股票时机
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Skyrimgo">
+            
+              <p class="site-author-name" itemprop="name">Skyrimgo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题1（难度：-）"><span class="nav-number">1.</span> <span class="nav-text">问题1（难度：** ）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">1.1.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码"><span class="nav-number">1.2.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进算法"><span class="nav-number">1.3.</span> <span class="nav-text">改进算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进思路"><span class="nav-number">1.4.</span> <span class="nav-text">改进思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码-1"><span class="nav-number">1.5.</span> <span class="nav-text">实现代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题2（难度：-）"><span class="nav-number">2.</span> <span class="nav-text">问题2（难度：** ）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现代码-2"><span class="nav-number">2.2.</span> <span class="nav-text">实现代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Skyrimgo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
