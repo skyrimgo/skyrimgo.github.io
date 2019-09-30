@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spring Boot,Redis,">
+  <meta name="keywords" content="面试,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Spring Boot集成单机版Redis，优化查询速度。">
-<meta name="keywords" content="Spring Boot,Redis">
+<meta name="description" content="1、Java事件机制包括哪三个部分？分别介绍。 事件：封装事件源对象。  事件监听器：监听事件源的属性。  事件源：事件发生的地方，需要有盛装监听器的容器。   2、为什么要使用线程池？ 提高效率：不用对每个请求都创建一个线程。创建一定数量的线程放在线程之中，需要的时候从池中取出。  方便管理：对线程进行统一管理，多出来的请求可以排队等候，避免无休止的创建线程导致系统崩溃。   3、说说几种常见的">
+<meta name="keywords" content="面试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot集成Redis">
-<meta property="og:url" content="skyrimgo.club/2019/08/07/springboot-redis/index.html">
+<meta property="og:title" content="阿里蚂蚁金服面试题">
+<meta property="og:url" content="skyrimgo.club/2019/09/26/ali126/index.html">
 <meta property="og:site_name" content="朝思录">
-<meta property="og:description" content="Spring Boot集成单机版Redis，优化查询速度。">
+<meta property="og:description" content="1、Java事件机制包括哪三个部分？分别介绍。 事件：封装事件源对象。  事件监听器：监听事件源的属性。  事件源：事件发生的地方，需要有盛装监听器的容器。   2、为什么要使用线程池？ 提高效率：不用对每个请求都创建一个线程。创建一定数量的线程放在线程之中，需要的时候从池中取出。  方便管理：对线程进行统一管理，多出来的请求可以排队等候，避免无休止的创建线程导致系统崩溃。   3、说说几种常见的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-14T00:19:16.313Z">
+<meta property="og:updated_time" content="2019-09-29T11:55:56.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot集成Redis">
-<meta name="twitter:description" content="Spring Boot集成单机版Redis，优化查询速度。">
+<meta name="twitter:title" content="阿里蚂蚁金服面试题">
+<meta name="twitter:description" content="1、Java事件机制包括哪三个部分？分别介绍。 事件：封装事件源对象。  事件监听器：监听事件源的属性。  事件源：事件发生的地方，需要有盛装监听器的容器。   2、为什么要使用线程池？ 提高效率：不用对每个请求都创建一个线程。创建一定数量的线程放在线程之中，需要的时候从池中取出。  方便管理：对线程进行统一管理，多出来的请求可以排队等候，避免无休止的创建线程导致系统崩溃。   3、说说几种常见的">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="skyrimgo.club/2019/08/07/springboot-redis/">
+  <link rel="canonical" href="skyrimgo.club/2019/09/26/ali126/">
 
 
 
 
 
-  <title>Spring Boot集成Redis | 朝思录</title>
+  <title>阿里蚂蚁金服面试题 | 朝思录</title>
   
 
 
@@ -236,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="skyrimgo.club/2019/08/07/springboot-redis/">
+    <link itemprop="mainEntityOfPage" href="skyrimgo.club/2019/09/26/ali126/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Skyrimgo">
@@ -253,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring Boot集成Redis</h1>
+          <h1 class="post-title" itemprop="name headline">阿里蚂蚁金服面试题</h1>
         
 
         <div class="post-meta">
@@ -265,8 +265,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-07T20:29:47+08:00">
-                2019-08-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-26T16:28:06+08:00">
+                2019-09-26
               </time>
             
 
@@ -303,20 +303,93 @@
       
 
       
-        <p><code>Spring Boot</code>集成单机版<code>Redis</code>，优化查询速度。</p>
-<a id="more"></a>
-<h3 id="一、项目中添加Redis依赖"><a href="#一、项目中添加Redis依赖" class="headerlink" title="一、项目中添加Redis依赖"></a>一、项目中添加<code>Redis</code>依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、设置Redis属性"><a href="#二、设置Redis属性" class="headerlink" title="二、设置Redis属性"></a>二、设置Redis属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring.redis.database=0</span><br><span class="line">spring.redis.host=192.168.1.106</span><br><span class="line">spring.redis.port=6379</span><br><span class="line">spring.redis.jedis.pool.max-active=8</span><br><span class="line">spring.redis.jedis.pool.max-wait=-1</span><br><span class="line">spring.redis.jedis.pool.max-idle=8</span><br><span class="line">spring.redis.jedis.pool.min-idle=0</span><br><span class="line">#设置连接超时时间(毫秒)，不能太小</span><br><span class="line">spring.redis.timeout=1000</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、服务实现类中添加注解-Cacheable"><a href="#三、服务实现类中添加注解-Cacheable" class="headerlink" title="三、服务实现类中添加注解@Cacheable"></a>三、服务实现类中添加注解<code>@Cacheable</code></h3><p>使用<code>@Cacheable</code>标记的方法在执行后<code>Spring Cache</code>将缓存其返回结果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//缓存注解</span><br><span class="line">@Cacheable(value = &quot;myname&quot;)</span><br><span class="line">@Override</span><br><span class="line">public User findUser(String name) &#123;</span><br><span class="line">    System.out.println(&quot;从数据库查询&quot;);</span><br><span class="line">    return userMapper.findUserByName(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="四、启动类中添加注解-EnableCaching"><a href="#四、启动类中添加注解-EnableCaching" class="headerlink" title="四、启动类中添加注解@EnableCaching"></a>四、启动类中添加注解<code>@EnableCaching</code></h3><p><code>@EnableCaching</code>注解是<code>spring framework</code>中的注解驱动的缓存管理功能。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@EnableCaching</span><br><span class="line">public class DemoApplication &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="五、结论"><a href="#五、结论" class="headerlink" title="五、结论"></a>五、结论</h3><p>后续的查询将使用Redis，优化查询效率。</p>
-
+        <h3 id="1、Java事件机制包括哪三个部分？分别介绍。"><a href="#1、Java事件机制包括哪三个部分？分别介绍。" class="headerlink" title="1、Java事件机制包括哪三个部分？分别介绍。"></a>1、Java事件机制包括哪三个部分？分别介绍。</h3><ul>
+<li><p>事件：封装事件源对象。</p>
+</li>
+<li><p>事件监听器：监听事件源的属性。</p>
+</li>
+<li><p>事件源：事件发生的地方，需要有盛装监听器的容器。</p>
+</li>
+</ul>
+<h3 id="2、为什么要使用线程池？"><a href="#2、为什么要使用线程池？" class="headerlink" title="2、为什么要使用线程池？"></a>2、为什么要使用线程池？</h3><ul>
+<li><p>提高效率：不用对每个请求都创建一个线程。创建一定数量的线程放在线程之中，需要的时候从池中取出。</p>
+</li>
+<li><p>方便管理：对线程进行统一管理，多出来的请求可以排队等候，避免无休止的创建线程导致系统崩溃。</p>
+</li>
+</ul>
+<h3 id="3、说说几种常见的线程池及使用场景。"><a href="#3、说说几种常见的线程池及使用场景。" class="headerlink" title="3、说说几种常见的线程池及使用场景。"></a>3、说说几种常见的线程池及使用场景。</h3><ul>
+<li><p>newFixedThreadPool（固定大小的线程池）</p>
+<p>特点：核心线程数和最大线程数大小一样。</p>
+<p>使用场景：适用于处理CPU密集型的任务。</p>
+</li>
+<li><p>newSingleThreadExecutor（单线程线程池，使用唯一工作线程执行任务）</p>
+<p>特点：核心线程数和最大线程数大小一样且都是1。</p>
+<p>适用场景：适用于串行执行任务的场景。</p>
+</li>
+<li><p>newCachedThreadPool（可缓存线程的线程池，可灵活回收空闲线程）</p>
+<p>特点：核心线程数为0，且最大线程数为Integer.MAX_VALUE。</p>
+<p>适用场景：用于并发执行大量短期的小任务。</p>
+</li>
+<li><p>newScheduledThreadPool（定长线程池，支持周期性事务执行）</p>
+<p>特点：最大线程数为Integer.MAX_VALUE。<br>阻塞队列是DelayedWorkQueue。</p>
+<p>适用场景：需要多个后台线程执行周期任务，同时需要限制线程数量的场景。</p>
+</li>
+</ul>
+<h3 id="4、线程池都有哪几种工作队列？"><a href="#4、线程池都有哪几种工作队列？" class="headerlink" title="4、线程池都有哪几种工作队列？"></a>4、线程池都有哪几种工作队列？</h3><ul>
+<li><p>ArrayBlockingQueue</p>
+<p>基于数据结构的有界阻塞队列，按FIFO原则堆元素排序。</p>
+</li>
+<li><p>LinkedBlockingQueue</p>
+<p>基于链表结构的阻塞队列，吞吐率高于ArrayBlockingQueue。</p>
+</li>
+<li><p>SynchronousQueue</p>
+<p>一个不存储元素的阻塞队列，吞吐量高于LinkedBlockingQueue。</p>
+</li>
+<li><p>PriorityBlockingQueue</p>
+<p>一个具有优先级的无限阻塞队列。</p>
+</li>
+</ul>
+<h3 id="5、怎样理解无界队列和有界队列？"><a href="#5、怎样理解无界队列和有界队列？" class="headerlink" title="5、怎样理解无界队列和有界队列？"></a>5、怎样理解无界队列和有界队列？</h3><ul>
+<li><p>有界队列有固定大小的队列，例如：设定了大小的LinkedBlockingQueue，SynchronousQueue。</p>
+<p>初始的poolSize &lt; corePoolSize，提交的runnable任务，会直接做为new一个Thread的参数，立马执行 。</p>
+<p>当提交的任务数超过了corePoolSize，会将当前的runable提交到一个block queue中。</p>
+<p>有界队列满了之后，如果poolSize &lt; maximumPoolsize时，会尝试new 一个Thread的进行救急处理，立马执行对应的runnable任务。</p>
+<p>如果无法处理，就会执行reject操作。</p>
+</li>
+<li><p>无界队列没有设置固定大小的队列，例如：没有设置大小的LinkedBlockingQueue。</p>
+<p>与有界队列相比，除非系统资源耗尽，否则无界的任务队列不存在任务入队失败的情况。</p>
+<p>当有新的任务到来，系统的线程数小于corePoolSize时，则新建线程执行任务。</p>
+<p>当达到corePoolSize后，就不会继续增加，若后续仍有新的任务加入，而没有空闲的线程资源，则任务直接进入队列等待。</p>
+<p>当线程池的任务缓存队列已满并且线程池中的线程数目达到maximumPoolSize，如果还有任务到来就会采取任务拒绝策略。</p>
+</li>
+</ul>
+<h3 id="6、线程池中集中重要的参数及流程说明。"><a href="#6、线程池中集中重要的参数及流程说明。" class="headerlink" title="6、线程池中集中重要的参数及流程说明。"></a>6、线程池中集中重要的参数及流程说明。</h3><ul>
+<li><p>corePoolSize</p>
+<p>核心池的大小，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列中。</p>
+</li>
+<li><p>maximumPoolSize</p>
+<p>线程池最大线程数，表示在线程池中最多能创建多少个线程。</p>
+</li>
+<li><p>keepAliveTime</p>
+<p>表示线程没有任务执行时最多保持多长时间就会停止。</p>
+</li>
+<li><p>unit</p>
+<p>参数keepAliveTime的时间单位。</p>
+</li>
+<li><p>workQueue</p>
+<p>一个阻塞队列用来存储等待执行的任务，阻塞队列选择见问题4。</p>
+</li>
+<li><p>ThreadFactory</p>
+<p>用于设置创建线程的工厂</p>
+</li>
+<li><p>handler</p>
+<p>设置拒绝处理任务时的策略。</p>
+</li>
+</ul>
+<h3 id="7、什么是反射机制？"><a href="#7、什么是反射机制？" class="headerlink" title="7、什么是反射机制？"></a>7、什么是反射机制？</h3><ul>
+<li>Java 反射机制是在运行状态中，对于任意一个类，都能够获得这个类的所有属性和方法，对于任意一个对象都能够调用它的任意一个属性和方法。</li>
+</ul>
+<h3 id="待续。。。"><a href="#待续。。。" class="headerlink" title="待续。。。"></a>待续。。。</h3>
       
     </div>
     
@@ -333,9 +406,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
-          
-            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+            <a href="/tags/面试/" rel="tag"><i class="fa fa-tag"></i> 面试</a>
           
         </div>
       
@@ -348,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/06/mybatis/" rel="next" title="Spring Boot整合Mybatis（注解方式）">
-                <i class="fa fa-chevron-left"></i> Spring Boot整合Mybatis（注解方式）
+              <a href="/2019/09/25/vivo/" rel="next" title="VIVO笔试编程题三题">
+                <i class="fa fa-chevron-left"></i> VIVO笔试编程题三题
               </a>
             
           </div>
@@ -357,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/10/springboot-file/" rel="prev" title="Spring Boot整合文件的上传">
-                Spring Boot整合文件的上传 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -485,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、项目中添加Redis依赖"><span class="nav-number">1.</span> <span class="nav-text">一、项目中添加Redis依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、设置Redis属性"><span class="nav-number">2.</span> <span class="nav-text">二、设置Redis属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、服务实现类中添加注解-Cacheable"><span class="nav-number">3.</span> <span class="nav-text">三、服务实现类中添加注解@Cacheable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、启动类中添加注解-EnableCaching"><span class="nav-number">4.</span> <span class="nav-text">四、启动类中添加注解@EnableCaching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、结论"><span class="nav-number">5.</span> <span class="nav-text">五、结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Java事件机制包括哪三个部分？分别介绍。"><span class="nav-number">1.</span> <span class="nav-text">1、Java事件机制包括哪三个部分？分别介绍。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、为什么要使用线程池？"><span class="nav-number">2.</span> <span class="nav-text">2、为什么要使用线程池？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、说说几种常见的线程池及使用场景。"><span class="nav-number">3.</span> <span class="nav-text">3、说说几种常见的线程池及使用场景。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、线程池都有哪几种工作队列？"><span class="nav-number">4.</span> <span class="nav-text">4、线程池都有哪几种工作队列？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、怎样理解无界队列和有界队列？"><span class="nav-number">5.</span> <span class="nav-text">5、怎样理解无界队列和有界队列？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、线程池中集中重要的参数及流程说明。"><span class="nav-number">6.</span> <span class="nav-text">6、线程池中集中重要的参数及流程说明。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、什么是反射机制？"><span class="nav-number">7.</span> <span class="nav-text">7、什么是反射机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待续。。。"><span class="nav-number">8.</span> <span class="nav-text">待续。。。</span></a></li></ol></div>
             
 
           </div>
