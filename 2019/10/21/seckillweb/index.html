@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SpringMVC,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。、">
+<meta name="keywords" content="SpringMVC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java高并发之秒杀系统Web层开发">
+<meta property="og:url" content="skyrimgo.club/2019/10/21/seckillweb/index.html">
+<meta property="og:site_name" content="朝思录">
+<meta property="og:description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。、">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/shop_list.jpg?raw=true">
+<meta property="og:updated_time" content="2019-10-31T02:06:04.656Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java高并发之秒杀系统Web层开发">
+<meta name="twitter:description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。、">
+<meta name="twitter:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/shop_list.jpg?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="skyrimgo.club/2019/10/21/seckillweb/">
+
+
+
+
+
+  <title>Java高并发之秒杀系统Web层开发 | 朝思录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://your-url" class="github-corner" aria-label="View source on GitHub">
+	<svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	</a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+	
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">朝思录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="skyrimgo.club/2019/10/21/seckillweb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Skyrimgo">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝思录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java高并发之秒杀系统Web层开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T08:54:00+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>基于<code>SpringMVC</code>的Java高并发之秒杀系统Web层开发。、</p>
+<a id="more"></a>
+<h3 id="一、整合配置SpringMVC框架"><a href="#一、整合配置SpringMVC框架" class="headerlink" title="一、整合配置SpringMVC框架"></a>一、整合配置<code>SpringMVC</code>框架</h3><h4 id="配置SpringMVC中央控制器"><a href="#配置SpringMVC中央控制器" class="headerlink" title="配置SpringMVC中央控制器"></a>配置<code>SpringMVC</code>中央控制器</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE web-app PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"</span></span><br><span class="line"><span class="meta">        "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--配置DispatcherServlet--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>seckill-dispacher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置springMVC需要加载的配置文件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/spring-*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>seckill-dispacher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--默认匹配所有的请求--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置SpringMVC-框架"><a href="#配置SpringMVC-框架" class="headerlink" title="配置SpringMVC 框架"></a>配置<code>SpringMVC</code> 框架</h4><ul>
+<li>开启<code>SpringMVC</code>注解</li>
+<li><code>Selvlet</code>配置静态资源</li>
+<li>配置<code>jsp</code></li>
+<li>扫描web相关的<code>bean</code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置SpringMVC --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1:开启springMVC注解模式 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--简化配置:</span></span><br><span class="line"><span class="comment">    (1)自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter</span></span><br><span class="line"><span class="comment">    (2)默认提供一系列的功能：数据绑定，数字和日期的format,xml,json默认读写支持</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--servlet-mapping 映射路径："/" --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 2:静态资源默认servlet配置</span></span><br><span class="line"><span class="comment">    (1)加入堆静态资源的处理：js,gif,png</span></span><br><span class="line"><span class="comment">    (2)允许使用"/"做整体映射--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--3:配置jsp 显示ViewResolver--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span> <span class="attr">value</span>=<span class="string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/jsp/"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 4：扫描web相关的bean--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"szy.seckill.web"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="二、实现秒杀相关的Reatful接口"><a href="#二、实现秒杀相关的Reatful接口" class="headerlink" title="二、实现秒杀相关的Reatful接口"></a>二、实现秒杀相关的Reatful接口</h3><p>在 REST 中，资源通过 <code>URL</code>进行识别和定位，然后通过行为(即 HTTP 方法)来定义 REST 来完成怎样的功能。</p>
+<h4 id="注解说明"><a href="#注解说明" class="headerlink" title="注解说明"></a>注解说明</h4><ul>
+<li>@Controller 声明控制类</li>
+<li>@Autowired 扫描并自动装配</li>
+<li>@RequestMapping(value = “  “, method = RequestMethod.GET)  跳转地址</li>
+<li>@PathVariable(“  “)  定义路径中的变量</li>
+<li>@CookieValue(value = “  “, required = false)  从cookie中取值，非必要。</li>
+</ul>
+<h4 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h4><p>访问列表时显示商品列表。<br>访问商品细节时，显示细节。<br>返回值为页面的名称。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/seckill"</span>)<span class="comment">//url:/模块/资源/&#123;id&#125;/细分/seckill/list</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeckillController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SeckillService seckillService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(name = <span class="string">"/list"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//获取列表页</span></span><br><span class="line">        List&lt;Seckill&gt; list = seckillService.getSeckillList();</span><br><span class="line">        model.addAttribute(<span class="string">"list"</span>, list);<span class="comment">//jsp页面可通过$&#123;list&#125;获取值</span></span><br><span class="line">        <span class="comment">//list.jsp+model=ModelAndView</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"list"</span>;<span class="comment">// /WEB-INF/jsp/"list".jsp</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;seckillId&#125;/detail"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">detail</span><span class="params">(@PathVariable(<span class="string">"seckillId"</span>)</span> Long seckillId, Model model) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (seckillId == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"redirect:/seckill/list"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Seckill seckill = seckillService.getSeckillById(seckillId);</span><br><span class="line">        <span class="keyword">if</span> (seckill == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"forward:/seckill/list"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        model.addAttribute(<span class="string">"seckill"</span>, seckill);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"detail"</span>;<span class="comment">// /WEB-INF/jsp/"detail".jsp</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//produce设置，防止json乱码</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;seckillId&#125;/exposer"</span>, method = RequestMethod.POST, produces = &#123;<span class="string">"application/json;charset=UTF-8"</span>&#125;)</span><br><span class="line">    <span class="comment">//返回json</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SeckillResult&lt;Exposer&gt; <span class="title">exposer</span><span class="params">(Long seckillId)</span> </span>&#123;</span><br><span class="line">        SeckillResult&lt;Exposer&gt; result;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Exposer exposer = seckillService.exportSeckillUrl(seckillId);</span><br><span class="line">            result = <span class="keyword">new</span> SeckillResult&lt;&gt;(<span class="keyword">true</span>, exposer);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            logger.error(e.getMessage());</span><br><span class="line">            result = <span class="keyword">new</span> SeckillResult&lt;&gt;(<span class="keyword">false</span>, e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;seckillId&#125;/&#123;md5&#125;/execution"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SeckillResult&lt;SeckillExecution&gt; <span class="title">execute</span><span class="params">(@PathVariable(<span class="string">"seckillId"</span>)</span> Long seckillId, @<span class="title">PathVariable</span><span class="params">(<span class="string">"md5"</span>)</span> String md5, @<span class="title">CookieValue</span><span class="params">(value = <span class="string">"seckillPhone"</span>, required = <span class="keyword">false</span>)</span> Long userPhone) </span>&#123;</span><br><span class="line">        <span class="comment">//spring valid</span></span><br><span class="line">        <span class="keyword">if</span> (userPhone == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SeckillResult&lt;&gt;(<span class="keyword">false</span>, <span class="string">"未注册"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        SeckillResult&lt;SeckillExecution&gt; result;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SeckillExecution execution = seckillService.executeSeckill(seckillId, userPhone, md5);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SeckillResult&lt;SeckillExecution&gt;(<span class="keyword">true</span>, execution);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (RepeatKillException e) &#123;</span><br><span class="line">            SeckillExecution seckillExecution = <span class="keyword">new</span> SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SeckillResult&lt;SeckillExecution&gt;(<span class="keyword">false</span>, seckillExecution);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SeckillCloseException e) &#123;</span><br><span class="line">            SeckillExecution seckillExecution = <span class="keyword">new</span> SeckillExecution(seckillId, SeckillStatEnum.END);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SeckillResult&lt;SeckillExecution&gt;(<span class="keyword">false</span>, seckillExecution);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            logger.error(e.getMessage());</span><br><span class="line">            SeckillExecution seckillExecution = <span class="keyword">new</span> SeckillExecution(seckillId, SeckillStatEnum.INNER_ERROR);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SeckillResult&lt;SeckillExecution&gt;(<span class="keyword">false</span>, seckillExecution);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/time/now"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> SeckillResult <span class="title">time</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Date nowTime = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SeckillResult(<span class="keyword">true</span>, nowTime.getTime());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基于bootstrap开发页面结构"><a href="#基于bootstrap开发页面结构" class="headerlink" title="基于bootstrap开发页面结构"></a>基于bootstrap开发页面结构</h3><h4 id="定义标签页-tag-jsp"><a href="#定义标签页-tag-jsp" class="headerlink" title="定义标签页(tag.jsp)"></a>定义标签页(tag.jsp)</h4><p>jstl标签是jsp的标准标签库。设置变量的作用域，格式化系统时间。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%@taglib</span> <span class="attr">prefix</span>=<span class="string">"c"</span> <span class="attr">uri</span>=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%@taglib</span> <span class="attr">prefix</span>=<span class="string">"fmt"</span> <span class="attr">uri</span>=<span class="string">"http://java.sun.com/jsp/jstl/fmt"</span> %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="定义公共页面头部-head-jsp"><a href="#定义公共页面头部-head-jsp" class="headerlink" title="定义公共页面头部(head.jsp)"></a>定义公共页面头部(head.jsp)</h4><p>定义<code>bootstrap</code>的格式规范。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入 Bootstrap --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">&lt;script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">&lt;script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="列表页-list-jsp"><a href="#列表页-list-jsp" class="headerlink" title="列表页(list.jsp)"></a>列表页(list.jsp)</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">page</span> <span class="attr">contentType</span>=<span class="string">"text/html;charset=UTF-8"</span> <span class="attr">language</span>=<span class="string">"java"</span> %&gt;</span></span><br><span class="line"><span class="comment">&lt;!--引入jstl--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%@include</span> <span class="attr">file</span>=<span class="string">"common/tag.jsp"</span> %&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>秒杀列表页<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%@include</span> <span class="attr">file</span>=<span class="string">"common/head.jsp"</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel panel-default"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-heading text-center"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>秒杀列表<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-body"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-hover"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>名称<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>库存<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>开始时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>结束时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>创建时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">th</span>&gt;</span>详情页<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">var</span>=<span class="string">"sk"</span> <span class="attr">items</span>=<span class="string">"$&#123;list&#125;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>$&#123;sk.name&#125;<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span>$&#123;sk.number&#125;<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">fmt:formatDate</span> <span class="attr">value</span>=<span class="string">"$&#123;sk.startTime&#125;"</span> <span class="attr">pattern</span>=<span class="string">"yyyy-MM-dd HH:mm:ss"</span>/&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">fmt:formatDate</span> <span class="attr">value</span>=<span class="string">"$&#123;sk.endTime&#125;"</span> <span class="attr">pattern</span>=<span class="string">"yyyy-MM-dd HH:mm:ss"</span>/&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">fmt:formatDate</span> <span class="attr">value</span>=<span class="string">"$&#123;sk.createTime&#125;"</span> <span class="attr">pattern</span>=<span class="string">"yyyy-MM-dd HH:mm:ss"</span>/&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-info"</span> <span class="attr">href</span>=<span class="string">"/seckill/$&#123;sk.seckillId&#125;/detail"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="页面显示"><a href="#页面显示" class="headerlink" title="页面显示"></a>页面显示</h4><p><img src="https://github.com/skyrimgo/hexo-asset-image/raw/master/shop_list.jpg?raw=true" alt="Markdown"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/20/seckillservice/" rel="next" title="Java高并发之秒杀系统Service层开发">
+                <i class="fa fa-chevron-left"></i> Java高并发之秒杀系统Service层开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Skyrimgo">
+            
+              <p class="site-author-name" itemprop="name">Skyrimgo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、整合配置SpringMVC框架"><span class="nav-number">1.</span> <span class="nav-text">一、整合配置SpringMVC框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置SpringMVC中央控制器"><span class="nav-number">1.1.</span> <span class="nav-text">配置SpringMVC中央控制器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置SpringMVC-框架"><span class="nav-number">1.2.</span> <span class="nav-text">配置SpringMVC 框架</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、实现秒杀相关的Reatful接口"><span class="nav-number">2.</span> <span class="nav-text">二、实现秒杀相关的Reatful接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注解说明"><span class="nav-number">2.1.</span> <span class="nav-text">注解说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能需求"><span class="nav-number">2.2.</span> <span class="nav-text">功能需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于bootstrap开发页面结构"><span class="nav-number">3.</span> <span class="nav-text">基于bootstrap开发页面结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义标签页-tag-jsp"><span class="nav-number">3.1.</span> <span class="nav-text">定义标签页(tag.jsp)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义公共页面头部-head-jsp"><span class="nav-number">3.2.</span> <span class="nav-text">定义公共页面头部(head.jsp)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表页-list-jsp"><span class="nav-number">3.3.</span> <span class="nav-text">列表页(list.jsp)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页面显示"><span class="nav-number">3.4.</span> <span class="nav-text">页面显示</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Skyrimgo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
