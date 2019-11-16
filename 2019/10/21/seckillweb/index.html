@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。、">
+<meta name="description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。">
 <meta name="keywords" content="SpringMVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java高并发之秒杀系统Web层开发">
 <meta property="og:url" content="skyrimgo.club/2019/10/21/seckillweb/index.html">
 <meta property="og:site_name" content="朝思录">
-<meta property="og:description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。、">
+<meta property="og:description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/shop_list.jpg?raw=true">
-<meta property="og:updated_time" content="2019-10-31T02:06:04.656Z">
+<meta property="og:updated_time" content="2019-11-04T02:14:53.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java高并发之秒杀系统Web层开发">
-<meta name="twitter:description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。、">
+<meta name="twitter:description" content="基于SpringMVC的Java高并发之秒杀系统Web层开发。">
 <meta name="twitter:image" content="https://github.com/skyrimgo/hexo-asset-image/raw/master/shop_list.jpg?raw=true">
 
 
@@ -312,7 +312,7 @@
       
 
       
-        <p>基于<code>SpringMVC</code>的Java高并发之秒杀系统Web层开发。、</p>
+        <p>基于<code>SpringMVC</code>的Java高并发之秒杀系统Web层开发。</p>
 <a id="more"></a>
 <h3 id="一、整合配置SpringMVC框架"><a href="#一、整合配置SpringMVC框架" class="headerlink" title="一、整合配置SpringMVC框架"></a>一、整合配置<code>SpringMVC</code>框架</h3><h4 id="配置SpringMVC中央控制器"><a href="#配置SpringMVC中央控制器" class="headerlink" title="配置SpringMVC中央控制器"></a>配置<code>SpringMVC</code>中央控制器</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE web-app PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"</span></span><br><span class="line"><span class="meta">        "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--配置DispatcherServlet--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>seckill-dispacher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置springMVC需要加载的配置文件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/spring-*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>seckill-dispacher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--默认匹配所有的请求--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -383,6 +383,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/16/stream-lambda/" rel="prev" title="巧用java8中的Stream">
+                巧用java8中的Stream <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -461,7 +465,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -474,7 +478,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -719,5 +723,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-koharu"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
